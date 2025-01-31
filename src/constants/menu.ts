@@ -388,13 +388,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
-  {
-    key: "widgets",
-    label: "Widgets",
-    isTitle: false,
-    icon: "gift",
-    url: "/ui/widgets",
-  },
+
   {
     key: "icons",
     label: "Icons",
@@ -469,30 +463,15 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/ui/forms/advanced",
         parentKey: "forms",
       },
-      {
-        key: "form-validation",
-        label: "Validation",
-        url: "/ui/forms/validation",
-        parentKey: "forms",
-      },
-      {
-        key: "form-wizard",
-        label: "Wizard",
-        url: "/ui/forms/wizard",
-        parentKey: "forms",
-      },
+     
+      
       {
         key: "form-upload",
         label: "File Uploads",
         url: "/ui/forms/upload",
         parentKey: "forms",
       },
-      {
-        key: "form-editors",
-        label: "Editors",
-        url: "/ui/forms/editors",
-        parentKey: "forms",
-      },
+    
     ],
   },
   {
@@ -515,46 +494,8 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
-  {
-    key: "charts",
-    label: "Charts",
-    isTitle: false,
-    icon: "bar-chart-2",
-    children: [
-      {
-        key: "chart-apex",
-        label: "Apex Charts",
-        url: "/ui/charts/apex",
-        parentKey: "charts",
-      },
-      {
-        key: "chart-chartjs",
-        label: "Chartjs",
-        url: "/ui/charts/chartjs",
-        parentKey: "charts",
-      },
-    ],
-  },
-  {
-    key: "maps",
-    label: "Maps",
-    isTitle: false,
-    icon: "map",
-    children: [
-      {
-        key: "maps-googlemaps",
-        label: "Google Maps",
-        url: "/ui/googlemaps",
-        parentKey: "maps",
-      },
-      {
-        key: "maps-vectormaps",
-        label: "Vector Maps",
-        url: "/ui/vectormaps",
-        parentKey: "maps",
-      },
-    ],
-  },
+
+  
   {
     key: "menu-levels",
     label: "Menu Levels",

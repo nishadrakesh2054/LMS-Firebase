@@ -115,8 +115,7 @@ const LoadingButtons = React.lazy(
   () => import("../pages/uikit/LoadingButtons")
 );
 
-// widgets
-const Widgets = React.lazy(() => import("../pages/uikit/Widgets"));
+
 
 // icons
 const TwoToneIcons = React.lazy(() => import("../pages/icons/TwoToneIcons/"));
@@ -135,22 +134,17 @@ const WeatherIcons = React.lazy(() => import("../pages/icons/WeatherIcons/"));
 // forms
 const BasicForms = React.lazy(() => import("../pages/forms/Basic"));
 const FormAdvanced = React.lazy(() => import("../pages/forms/Advanced"));
-const FormValidation = React.lazy(() => import("../pages/forms/Validation"));
-const FormWizard = React.lazy(() => import("../pages/forms/Wizard"));
+
 const FileUpload = React.lazy(() => import("../pages/forms/FileUpload"));
-const Editors = React.lazy(() => import("../pages/forms/Editors"));
+
 
 // tables
 const BasicTables = React.lazy(() => import("../pages/tables/Basic"));
 const AdvancedTables = React.lazy(() => import("../pages/tables/Advanced"));
 
-// charts
-const ApexChart = React.lazy(() => import("../pages/charts/Apex"));
-const ChartJs = React.lazy(() => import("../pages/charts/ChartJs"));
 
-// maps
-const GoogleMaps = React.lazy(() => import("../pages/maps/GoogleMaps"));
-const VectorMaps = React.lazy(() => import("../pages/maps/VectorMaps"));
+
+
 
 export interface RoutesProps {
   path: RouteProps["path"];
@@ -562,12 +556,7 @@ const uiRoutes = {
         },
       ],
     },
-    {
-      path: "/ui/widgets",
-      name: "Widgets",
-      element: <Widgets />,
-      route: PrivateRoute,
-    },
+   
     {
       path: "/ui/icons",
       name: "Icons",
@@ -638,30 +627,15 @@ const uiRoutes = {
           element: <FormAdvanced />,
           route: PrivateRoute,
         },
-        {
-          path: "/ui/forms/validation",
-          name: "Form Validation",
-          element: <FormValidation />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/forms/wizard",
-          name: "Form Wizard",
-          element: <FormWizard />,
-          route: PrivateRoute,
-        },
+     
+     
         {
           path: "/ui/forms/upload",
           name: "File Upload",
           element: <FileUpload />,
           route: PrivateRoute,
         },
-        {
-          path: "/ui/forms/editors",
-          name: "Editors",
-          element: <Editors />,
-          route: PrivateRoute,
-        },
+      
       ],
     },
     {
@@ -682,42 +656,8 @@ const uiRoutes = {
         },
       ],
     },
-    {
-      path: "/ui/charts",
-      name: "Charts",
-      children: [
-        {
-          path: "/ui/charts/apex",
-          name: "Apex",
-          element: <ApexChart />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/charts/chartjs",
-          name: "Chartjs",
-          element: <ChartJs />,
-          route: PrivateRoute,
-        },
-      ],
-    },
-    {
-      path: "/ui/maps",
-      name: "Maps",
-      children: [
-        {
-          path: "/ui/googlemaps",
-          name: "Google Maps",
-          element: <GoogleMaps />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/vectorMaps",
-          name: "Google Maps",
-          element: <VectorMaps />,
-          route: PrivateRoute,
-        },
-      ],
-    },
+
+  
   ],
 };
 
