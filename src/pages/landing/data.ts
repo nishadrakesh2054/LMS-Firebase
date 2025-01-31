@@ -1,5 +1,4 @@
 // types
-import { PlanItemsTypes } from "../../components/PricingCard";
 
 import layout1 from "../../assets/images/landing/demo/layout-1.png";
 import layout2 from "../../assets/images/landing/demo/layout-2.png";
@@ -147,56 +146,6 @@ const features: FeatureTypes[] = [
   },
 ];
 
-const plans: PlanItemsTypes[] = [
-  {
-    id: 1,
-    name: "Single Application",
-    icon: "fe-user",
-    price: 49,
-    duration: "license",
-    features: [
-      "Number of end products 1",
-      "Customer support",
-      "Free Updates",
-      "1 Domain",
-      "Email Support",
-      "24x7 Support",
-    ],
-    isRecommended: false,
-  },
-  {
-    id: 2,
-    name: "Multiple Application",
-    icon: "fe-award",
-    price: 149,
-    duration: "license",
-    features: [
-      "Number of end products 3",
-      "Customer support",
-      "Free Updates",
-      "1 Domain",
-      "Email Support",
-      "24x7 Support",
-    ],
-    isRecommended: true,
-  },
-  {
-    id: 3,
-    name: "Extended",
-    icon: "fe-aperture",
-    price: 999,
-    duration: "license",
-    features: [
-      "Number of end products 1",
-      "Customer support",
-      "Free Updates",
-      "1 Domain",
-      "Email Support",
-      "24x7 Support",
-    ],
-    isRecommended: false,
-  },
-];
 
 const rawFaqs = [
   {
@@ -270,4 +219,4 @@ const testimonial: TestimonialTypes[] = [
   },
 ];
 
-export { services, layouts, features, plans, rawFaqs, testimonial };
+export { services, layouts, features, rawFaqs, testimonial };

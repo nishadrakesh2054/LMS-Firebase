@@ -21,7 +21,7 @@ import LanguageDropdown from "../components/LanguageDropdown";
 import NotificationDropdown from "../components/NotificationDropdown";
 import ProfileDropdown from "../components/ProfileDropdown";
 import CreateNew from "../components/CreateNew";
-import MegaMenu from "../components/MegaMenu";
+
 
 import profilePic from "../assets/images/users/user-1.jpg";
 import avatar4 from "../assets/images/users/user-4.jpg";
@@ -159,48 +159,7 @@ const otherOptions = [
   },
 ];
 
-// get mega-menu options
-const MegaMenuOptions = [
-  {
-    id: 1,
-    title: "UI Components",
-    menuItems: [
-      "Widgets",
-      "Nestable List",
-      "Range Sliders",
-      "Masonry Items",
-      "Sweet Alerts",
-      "Treeview Page",
-      "Tour Page",
-    ],
-  },
-  {
-    id: 2,
-    title: "Applications",
-    menuItems: [
-      "eCommerce Pages",
-      "CRM Pages",
-      "Email",
-      "Calendar",
-      "Team Contacts",
-      "Task Board",
-      "Email Templates",
-    ],
-  },
-  {
-    id: 3,
-    title: "Extra Pages",
-    menuItems: [
-      "Left Sidebar with User",
-      "Menu Collapsed",
-      "Small Left Sidebar",
-      "New Header Style",
-      "Search Result",
-      "Gallery Pages",
-      "Maintenance & Coming Soon",
-    ],
-  },
-];
+
 
 interface TopbarProps {
   hideLogo?: boolean;
@@ -293,14 +252,6 @@ const Topbar = ({
     dispatch(showRightSidebar());
   };
 
-  /**
-   * Toggles the left sidebar width
-   */
-  // const toggleLeftSidebarWidth = () => {
-  //   if (leftSideBarType === 'default' || leftSideBarType === 'compact')
-  //     dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_CONDENSED));
-  //   if (leftSideBarType === 'condensed') dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_DEFAULT));
-  // };
 
   return (
     <React.Fragment>
@@ -355,9 +306,7 @@ const Topbar = ({
               <CreateNew otherOptions={otherOptions} />
             </div>
 
-            <div className="dropdown dropdown-mega d-none d-xl-block">
-              <MegaMenu subMenus={MegaMenuOptions} />
-            </div>
+           
           </div>
 
           <ul className="topbar-menu d-flex align-items-center">

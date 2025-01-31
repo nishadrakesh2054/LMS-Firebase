@@ -4,7 +4,7 @@ import { Row, Col } from "react-bootstrap";
 // components
 import HyperDatepicker from "../../../components/Datepicker";
 
-import Statistics from "./Statistics";
+
 
 import UsersBalances from "./UsersBalances";
 import RevenueHistory from "./RevenueHistory";
@@ -52,7 +52,7 @@ const Dashboard1 = () => {
         </Col>
       </Row>
 
-      <Statistics />
+   
 
      
 
