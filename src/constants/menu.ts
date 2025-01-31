@@ -131,61 +131,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
     isTitle: false,
     icon: "package",
     children: [
-      {
-        key: "page-starter",
-        label: "Starter",
-        url: "/pages/starter",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-timeline",
-        label: "Timeline",
-        url: "/pages/timeline",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-sitemap",
-        label: "Sitemap",
-        url: "/pages/sitemap",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-invoice",
-        label: "Invoice",
-        url: "/pages/invoice",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-faq",
-        label: "FAQs",
-        url: "/pages/faq",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-search-result",
-        label: "Search Results",
-        url: "/pages/serach-results",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-pricing",
-        label: "Pricing",
-        url: "/pages/pricing",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-maintenance",
-        label: "Maintenance",
-        url: "/maintenance",
-        target: "_blank",
-        parentKey: "extra-pages",
-      },
-      {
-        key: "page-upcoming",
-        label: "Coming Soon",
-        url: "/upcoming",
-        parentKey: "extra-pages",
-      },
+     
+    
+    
+      
+     
+     
+     
       {
         key: "page-gallery",
         label: "Gallery",
@@ -337,114 +289,10 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
-  {
-    key: "extended-ui",
-    label: "Extended UI",
-    isTitle: false,
-    icon: "layers",
-    badge: { variant: "info", text: "Hot" },
-    children: [
-      {
-        key: "extended-ui-nestable",
-        label: "Nestable List",
-        url: "/extended-ui/nestable",
-        parentKey: "extended-ui",
-      },
-      {
-        key: "extended-ui-dragdrop",
-        label: "Drag and Drop",
-        url: "/extended-ui/dragdrop",
-        parentKey: "extended-ui",
-      },
-      {
-        key: "extended-ui-rangesliders",
-        label: "Range Sliders",
-        url: "/extended-ui/rangesliders",
-        parentKey: "extended-ui",
-      },
-      {
-        key: "extended-ui-animation",
-        label: "Animation",
-        url: "/extended-ui/animation",
-        parentKey: "extended-ui",
-      },
-      {
-        key: "extended-ui-sweet-alert",
-        label: "Sweet Alert",
-        url: "/extended-ui/sweet-alert",
-        parentKey: "extended-ui",
-      },
-      {
-        key: "extended-ui-tour",
-        label: "Tour Page",
-        url: "/extended-ui/tour",
-        parentKey: "extended-ui",
-      },
-      {
-        key: "extended-ui-loading-buttons",
-        label: "Loading Buttons",
-        url: "/extended-ui/loading-buttons",
-        parentKey: "extended-ui",
-      },
-    ],
-  },
+ 
 
-  {
-    key: "icons",
-    label: "Icons",
-    isTitle: false,
-    icon: "cpu",
-    children: [
-      {
-        key: "icon-two-tone",
-        label: "Two Tone Icons",
-        url: "/ui/icons/two-tone",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-feather",
-        label: "Feather Icons",
-        url: "/ui/icons/feather",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-mdiicons",
-        label: "Material Design Icons",
-        url: "/ui/icons/mdi",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-dripicons",
-        label: "Dripicons",
-        url: "/ui/icons/dripicons",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-font-awesome",
-        label: "Font Awesome 5",
-        url: "/ui/icons/font-awesome",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-themify",
-        label: "Themify",
-        url: "/ui/icons/themify",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-simple-line",
-        label: "Simple Line",
-        url: "/ui/icons/simple-line",
-        parentKey: "icons",
-      },
-      {
-        key: "icon-weather",
-        label: "Weather",
-        url: "/ui/icons/weather",
-        parentKey: "icons",
-      },
-    ],
-  },
+
+  
   {
     key: "forms",
     label: "Forms",

@@ -65,19 +65,15 @@ const TicketsList = React.lazy(() => import("../pages/apps/Tickets/List/"));
 
 
 // extra pages
-const Starter = React.lazy(() => import("../pages/other/Starter"));
-const Timeline = React.lazy(() => import("../pages/other/Timeline"));
-const Sitemap = React.lazy(() => import("../pages/other/Sitemap/"));
+
+
 const Error404 = React.lazy(() => import("../pages/error/Error404"));
 
 // - other
-const Invoice = React.lazy(() => import("../pages/other/Invoice"));
-const FAQ = React.lazy(() => import("../pages/other/FAQ"));
-const SearchResults = React.lazy(() => import("../pages/other/SearchResults/"));
-const Upcoming = React.lazy(() => import("../pages/other/Upcoming"));
-const Pricing = React.lazy(() => import("../pages/other/Pricing"));
+
+
 const Gallery = React.lazy(() => import("../pages/other/Gallery/"));
-const Maintenance = React.lazy(() => import("../pages/other/Maintenance"));
+
 
 // uikit
 const Buttons = React.lazy(() => import("../pages/uikit/Buttons"));
@@ -105,31 +101,10 @@ const TooltipsPopovers = React.lazy(
 const GeneralUI = React.lazy(() => import("../pages/uikit/GeneralUI"));
 const Typography = React.lazy(() => import("../pages/uikit/Typography"));
 const Grid = React.lazy(() => import("../pages/uikit/Grid"));
-const NestableList = React.lazy(() => import("../pages/uikit/NestableList"));
-const DragDrop = React.lazy(() => import("../pages/uikit/DragDrop"));
-const RangeSliders = React.lazy(() => import("../pages/uikit/RangeSliders"));
-const Animation = React.lazy(() => import("../pages/uikit/Animation"));
-const TourPage = React.lazy(() => import("../pages/uikit/TourPage"));
-const SweetAlerts = React.lazy(() => import("../pages/uikit/SweetAlerts"));
-const LoadingButtons = React.lazy(
-  () => import("../pages/uikit/LoadingButtons")
-);
 
 
 
-// icons
-const TwoToneIcons = React.lazy(() => import("../pages/icons/TwoToneIcons/"));
-const FeatherIcons = React.lazy(() => import("../pages/icons/FeatherIcons/"));
-const Dripicons = React.lazy(() => import("../pages/icons/Dripicons/"));
-const MDIIcons = React.lazy(() => import("../pages/icons/MDIIcons/"));
-const FontAwesomeIcons = React.lazy(
-  () => import("../pages/icons/FontAwesomeIcons/")
-);
-const ThemifyIcons = React.lazy(() => import("../pages/icons/ThemifyIcons/"));
-const SimpleLineIcons = React.lazy(
-  () => import("../pages/icons/SimpleLineIcons/")
-);
-const WeatherIcons = React.lazy(() => import("../pages/icons/WeatherIcons/"));
+
 
 // forms
 const BasicForms = React.lazy(() => import("../pages/forms/Basic"));
@@ -317,48 +292,13 @@ const extrapagesRoutes = {
   icon: "package",
   header: "Custom",
   children: [
-    {
-      path: "/pages/starter",
-      name: "Starter",
-      element: <Starter />,
-      route: PrivateRoute,
-    },
-    {
-      path: "/pages/timeline",
-      name: "Timeline",
-      element: <Timeline />,
-      route: PrivateRoute,
-    },
-    {
-      path: "/pages/sitemap",
-      name: "Sitemap",
-      element: <Sitemap />,
-      route: PrivateRoute,
-    },
-    {
-      path: "/pages/invoice",
-      name: "Invoice",
-      element: <Invoice />,
-      route: PrivateRoute,
-    },
-    {
-      path: "/pages/faq",
-      name: "FAQ",
-      element: <FAQ />,
-      route: PrivateRoute,
-    },
-    {
-      path: "/pages/serach-results",
-      name: "Search Results",
-      element: <SearchResults />,
-      route: PrivateRoute,
-    },
-    {
-      path: "/pages/pricing",
-      name: "Pricing",
-      element: <Pricing />,
-      route: PrivateRoute,
-    },
+ 
+  
+ 
+
+ 
+  
+   
     {
       path: "/pages/gallery",
       name: "Gallery",
@@ -508,109 +448,8 @@ const uiRoutes = {
         },
       ],
     },
-    {
-      path: "/ui/extended",
-      name: "Extended UI",
-      children: [
-        {
-          path: "/extended-ui/nestable",
-          name: "Nestable List",
-          element: <NestableList />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/extended-ui/dragdrop",
-          name: "Drag and Drop",
-          element: <DragDrop />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/extended-ui/rangesliders",
-          name: "Range Sliders",
-          element: <RangeSliders />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/extended-ui/animation",
-          name: "Animation",
-          element: <Animation />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/extended-ui/sweet-alert",
-          name: "Sweet Alert",
-          element: <SweetAlerts />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/extended-ui/tour",
-          name: "Tour Page",
-          element: <TourPage />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/extended-ui/loading-buttons",
-          name: "Loading Buttons",
-          element: <LoadingButtons />,
-          route: PrivateRoute,
-        },
-      ],
-    },
+
    
-    {
-      path: "/ui/icons",
-      name: "Icons",
-      children: [
-        {
-          path: "/ui/icons/two-tone",
-          name: "Two Tone Icons",
-          element: <TwoToneIcons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/feather",
-          name: "Feather Icons",
-          element: <FeatherIcons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/dripicons",
-          name: "Dripicons",
-          element: <Dripicons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/mdi",
-          name: "Material Design",
-          element: <MDIIcons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/font-awesome",
-          name: "Font Awesome 5",
-          element: <FontAwesomeIcons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/themify",
-          name: "Themify",
-          element: <ThemifyIcons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/simple-line",
-          name: "Simple Line Icons",
-          element: <SimpleLineIcons />,
-          route: PrivateRoute,
-        },
-        {
-          path: "/ui/icons/weather",
-          name: "Weather Icons",
-          element: <WeatherIcons />,
-          route: PrivateRoute,
-        },
-      ],
-    },
     {
       path: "/ui/forms",
       name: "Forms",
@@ -757,12 +596,7 @@ const otherPublicRoutes = [
     element: <Landing />,
     route: Route,
   },
-  {
-    path: "/maintenance",
-    name: "Maintenance",
-    element: <Maintenance />,
-    route: Route,
-  },
+ 
   {
     path: "/error-404",
     name: "Error - 404",
@@ -770,12 +604,7 @@ const otherPublicRoutes = [
     route: Route,
   },
 
-  {
-    path: "/upcoming",
-    name: "Coming Soon",
-    element: <Upcoming />,
-    route: Route,
-  },
+
 ];
 
 // flatten the list of all nested routes
