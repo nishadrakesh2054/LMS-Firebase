@@ -71,15 +71,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
     isTitle: false,
     icon: "users",
     children: [
-     
       {
         key: "crm-contacts",
         label: "Contacts",
         url: "/apps/crm/contacts",
         parentKey: "apps-crm",
       },
-     
-     
+
       {
         key: "crm-customers",
         label: "Customers",
@@ -88,8 +86,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
- 
-
 
   {
     key: "apps-projects",
@@ -97,7 +93,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
     isTitle: false,
     icon: "briefcase",
     children: [
-   
       {
         key: "project-create-project",
         label: "Create Project",
@@ -106,7 +101,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
-
 
   {
     key: "apps-tickets",
@@ -120,7 +114,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/apps/tickets/list",
         parentKey: "apps-tickets",
       },
-   
     ],
   },
 
@@ -131,13 +124,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
     isTitle: false,
     icon: "package",
     children: [
-     
-    
-    
-      
-     
-     
-     
       {
         key: "page-gallery",
         label: "Gallery",
@@ -151,7 +137,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/error-404",
         parentKey: "extra-pages",
       },
- 
     ],
   },
   { key: "components", label: "Components", isTitle: true },
@@ -289,10 +274,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
- 
 
-
-  
   {
     key: "forms",
     label: "Forms",
@@ -311,15 +293,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/ui/forms/advanced",
         parentKey: "forms",
       },
-     
-      
+
       {
         key: "form-upload",
         label: "File Uploads",
         url: "/ui/forms/upload",
         parentKey: "forms",
       },
-    
     ],
   },
   {
@@ -343,7 +323,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
     ],
   },
 
-  
   {
     key: "menu-levels",
     label: "Menu Levels",
@@ -393,46 +372,6 @@ const MENU_ITEMS: MenuItemTypes[] = [
     ],
   },
 ];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const HORIZONTAL_MENU_ITEMS: MenuItemTypes[] = [
   {

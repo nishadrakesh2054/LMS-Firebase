@@ -133,13 +133,7 @@ export interface RoutesProps {
   children?: RoutesProps[];
 }
 
-// root routes
-// const rootRoute: RoutesProps = {
-//     path: '/',
-//     exact: true,
-//     element: () => <Root />,
-//     route: Route,
-// };
+
 
 // dashboards
 const dashboardRoutes: RoutesProps = {

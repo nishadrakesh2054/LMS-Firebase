@@ -1,10 +1,8 @@
 import React from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import {  Card } from "react-bootstrap";
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
-// components
-import ChartStatistics from "./ChartStatistics";
 
 interface StatisticsChartWidgetProps {
   title: string;
@@ -75,29 +73,7 @@ const StatisticsChartWidget2 = ({
             <h5 className="text-muted mt-0">Total sales made today</h5>
             <h2>{totalSales}</h2>
 
-            <Row className="row mt-3">
-              <Col className="col-4">
-                <ChartStatistics
-                  title="Target"
-                  stats={target}
-                  variant="danger"
-                />
-              </Col>
-              <Col className="col-4">
-                <ChartStatistics
-                  title="Last week"
-                  stats={lastWeek}
-                  variant="success"
-                />
-              </Col>
-              <Col className="col-4">
-                <ChartStatistics
-                  title="Last Month"
-                  stats={lastMonth}
-                  variant="danger"
-                />
-              </Col>
-            </Row>
+         
           </div>
         </Card.Body>
       </Card>

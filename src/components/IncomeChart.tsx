@@ -1,12 +1,12 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
+
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
 // components
 import { BasicPortlet } from "./Portlet";
 
-import ChartStatistics from "./ChartStatistics";
+
 
 const IncomeChart = () => {
   const apexOpts: ApexOptions = {
@@ -68,32 +68,7 @@ const IncomeChart = () => {
             width={250}
             className="apex-charts mt-0"
           />
-          <Row className="row mt-3">
-            <Col className="col-4">
-              <ChartStatistics
-                title="Target"
-                icon="fe-arrow-up"
-                stats="641"
-                variant="success"
-              />
-            </Col>
-            <Col className="col-4">
-              <ChartStatistics
-                title="Last week"
-                icon="fe-arrow-down"
-                stats="234"
-                variant="danger"
-              />
-            </Col>
-            <Col className="col-4">
-              <ChartStatistics
-                title="Last Month"
-                icon="fe-arrow-up"
-                stats="3201"
-                variant="success"
-              />
-            </Col>
-          </Row>
+          
         </div>
       </BasicPortlet>
     </>

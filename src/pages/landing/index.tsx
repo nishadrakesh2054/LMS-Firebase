@@ -4,24 +4,21 @@ import { Link } from "react-router-dom";
 // components
 import NavBar from "./NavBar";
 import Hero from "./Hero";
-import Services from "./Services";
+
 import Layouts from "./Layouts";
 import Features from "./Features";
-import Pricing from "./Pricing";
-import FAQ from "./FAQ";
-import Testimonial from "./Testimonial";
+
 import ContactUs from "./ContactUs";
 import Footer from "./Footer";
-import Clients from "./Clients";
+
 
 // dummy data
 import {
-  services,
+
   layouts,
   features,
-  // plans,
-  rawFaqs,
-  testimonial,
+ 
+
 } from "./data";
 
 const Landing = () => {
@@ -62,11 +59,9 @@ const Landing = () => {
       {/* hero */}
       <Hero />
 
-      {/* Clients */}
-      <Clients />
+  
 
-      {/* services */}
-      <Services services={services} />
+
 
       {/* layout demos */}
       <Layouts layouts={layouts} />
@@ -74,14 +69,10 @@ const Landing = () => {
       {/* features */}
       <Features features={features} />
 
-      {/* pricing */}
-      <Pricing />
 
-      {/* faqs */}
-      <FAQ rawFaqs={rawFaqs} />
+   
 
-      {/* testimonial */}
-      <Testimonial testimonial={testimonial} />
+  
 
       {/* contact */}
       <ContactUs />
