@@ -15,16 +15,8 @@ import { LayoutTypes, SideBarTypes } from "../constants/layout";
 // components
 import TopbarSearch from "../components/TopbarSearch";
 import MaximizeScreen from "../components/MaximizeScreen";
-import AppsDropdown from "../components/AppsDropdown/";
-// import SearchDropdown from '../components/SearchDropdown';
-import LanguageDropdown from "../components/LanguageDropdown";
-import NotificationDropdown from "../components/NotificationDropdown";
 import ProfileDropdown from "../components/ProfileDropdown";
-import CreateNew from "../components/CreateNew";
-
-
 import profilePic from "../assets/images/users/user-1.jpg";
-import avatar4 from "../assets/images/users/user-4.jpg";
 import logoSm from "../assets/images/logo-sm.png";
 import logoDark from "../assets/images/logo-dark.png";
 import logoDark2 from "../assets/images/logo-dark-2.png";
@@ -41,50 +33,6 @@ export interface NotificationItem {
   bgColor?: string;
 }
 
-// get the notifications
-const Notifications: NotificationItem[] = [
-  {
-    id: 1,
-    text: "Cristina Pride",
-    subText: "Hi, How are you? What about our next meeting",
-    avatar: profilePic,
-  },
-  {
-    id: 2,
-    text: "Caleb Flakelar commented on Admin",
-    subText: "1 min ago",
-    icon: "mdi mdi-comment-account-outline",
-    bgColor: "primary",
-  },
-  {
-    id: 3,
-    text: "Karen Robinson",
-    subText: "Wow ! this admin looks good and awesome design",
-    avatar: avatar4,
-  },
-  {
-    id: 4,
-    text: "New user registered.",
-    subText: "5 hours ago",
-    icon: "mdi mdi-account-plus",
-    bgColor: "warning",
-  },
-  {
-    id: 5,
-    text: "Caleb Flakelar commented on Admin",
-    subText: "1 min ago",
-    icon: "mdi mdi-comment-account-outline",
-    bgColor: "info",
-  },
-  {
-    id: 6,
-    text: "Carlos Crouch liked Admin",
-    subText: "13 days ago",
-    icon: "mdi mdi-heart",
-    bgColor: "secondary",
-  },
-];
-
 // get the profilemenu
 const ProfileMenus = [
   {
@@ -92,11 +40,7 @@ const ProfileMenus = [
     icon: "fe-user",
     redirectTo: "#",
   },
-  {
-    label: "Settings",
-    icon: "fe-settings",
-    redirectTo: "#",
-  },
+
   {
     label: "Lock Screen",
     icon: "fe-lock",
@@ -131,35 +75,33 @@ const SearchResults = [
   },
 ];
 
-const otherOptions = [
-  {
-    id: 1,
-    label: "New Projects",
-    icon: "fe-briefcase",
-  },
-  {
-    id: 2,
-    label: "Create Users",
-    icon: "fe-user",
-  },
-  {
-    id: 3,
-    label: "Revenue Report",
-    icon: "fe-bar-chart-line-",
-  },
-  {
-    id: 4,
-    label: "Settings",
-    icon: "fe-settings",
-  },
-  {
-    id: 4,
-    label: "Help & Support",
-    icon: "fe-headphones",
-  },
-];
-
-
+// const otherOptions = [
+//   {
+//     id: 1,
+//     label: "New Projects",
+//     icon: "fe-briefcase",
+//   },
+//   {
+//     id: 2,
+//     label: "Create Users",
+//     icon: "fe-user",
+//   },
+//   {
+//     id: 3,
+//     label: "Revenue Report",
+//     icon: "fe-bar-chart-line-",
+//   },
+//   {
+//     id: 4,
+//     label: "Settings",
+//     icon: "fe-settings",
+//   },
+//   {
+//     id: 4,
+//     label: "Help & Support",
+//     icon: "fe-headphones",
+//   },
+// ];
 
 interface TopbarProps {
   hideLogo?: boolean;
@@ -185,30 +127,29 @@ const Topbar = ({
     leftSideBarType: state.Layout.leftSideBarType,
   }));
 
-
   /**
    * Toggle the leftmenu when having mobile screen
    */
   const handleLeftMenuCallBack = () => {
     if (width < 1140) {
-      if (leftSideBarType === 'full') {
+      if (leftSideBarType === "full") {
         showLeftSideBarBackdrop();
-        document.getElementsByTagName("html")[0].classList.add("sidebar-enable");
-      }
-      else {
+        document
+          .getElementsByTagName("html")[0]
+          .classList.add("sidebar-enable");
+      } else {
         dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_FULL));
       }
     } else if (leftSideBarType === "condensed") {
       dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_DEFAULT));
-    } else if (leftSideBarType === 'full') {
+    } else if (leftSideBarType === "full") {
       showLeftSideBarBackdrop();
       document.getElementsByTagName("html")[0].classList.add("sidebar-enable");
-    } else if (leftSideBarType === 'fullscreen') {
+    } else if (leftSideBarType === "fullscreen") {
       dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_DEFAULT));
       // showLeftSideBarBackdrop();
       document.getElementsByTagName("html")[0].classList.add("sidebar-enable");
-    }
-    else {
+    } else {
       dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_CONDENSED));
     }
   };
@@ -231,7 +172,9 @@ const Topbar = ({
     }
 
     backdrop.addEventListener("click", function (e) {
-      document.getElementsByTagName("html")[0].classList.remove("sidebar-enable");
+      document
+        .getElementsByTagName("html")[0]
+        .classList.remove("sidebar-enable");
       dispatch(changeSidebarType(SideBarTypes.LEFT_SIDEBAR_TYPE_FULL));
       hideLeftSideBarBackdrop();
     });
@@ -252,10 +195,9 @@ const Topbar = ({
     dispatch(showRightSidebar());
   };
 
-
   return (
     <React.Fragment>
-      <div className={`navbar-custom ${navbarCssClasses}`}>
+      <div className={`navbar-custom   bg-blue ${navbarCssClasses}`}>
         <div className={`topbar ${containerCssClasses}`}>
           <div className="topbar-menu d-flex align-items-center gap-1">
             {!hideLogo && (
@@ -302,11 +244,11 @@ const Topbar = ({
               <i className="mdi mdi-menu" />
             </button>
 
-            <div className="dropdown d-none d-xl-block">
-              <CreateNew otherOptions={otherOptions} />
+            <div>
+              <h3 className="text-uppercase text-light fw-bold">
+                Gems Learning Hub
+              </h3>
             </div>
-
-           
           </div>
 
           <ul className="topbar-menu d-flex align-items-center">
@@ -319,20 +261,12 @@ const Topbar = ({
             <li className="dropdown d-none d-lg-inline-block">
               <MaximizeScreen />
             </li>
-            <li className="dropdown d-none d-lg-inline-block topbar-dropdown">
-              <AppsDropdown />
-            </li>
-            <li className="dropdown d-none d-lg-inline-block topbar-dropdown">
-              <LanguageDropdown />
-            </li>
-            <li className="dropdown notification-list">
-              <NotificationDropdown notifications={Notifications} />
-            </li>
+
             <li className="dropdown">
               <ProfileDropdown
                 profilePic={profilePic}
                 menuItems={ProfileMenus}
-                username={"Geneva"}
+                username={"Gems Admin"}
                 userTitle={"Founder"}
               />
             </li>

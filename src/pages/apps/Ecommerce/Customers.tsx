@@ -1,14 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Button } from "react-bootstrap";
-import classNames from "classnames";
 
 // components
 import PageTitle from "../../../components/PageTitle";
 import Table from "../../../components/Table";
 
 // dummy data
-import { customers } from "./data";
+import { students } from "./data";
 
 /* name column render */
 const NameColumn = ({ row }: { row: any }) => {
@@ -22,31 +21,9 @@ const NameColumn = ({ row }: { row: any }) => {
   );
 };
 
-/* last order column render */
-const LastOrderColumn = ({ row }: { row: any }) => {
-  return (
-    <>
-      {row.original.last_order.date}{" "}
-      <small className="text-muted">{row.original.last_order.time}</small>
-    </>
-  );
-};
 
-/* status column render */
-const StatusColumn = ({ row }: { row: any }) => {
-  return (
-    <React.Fragment>
-      <span
-        className={classNames("badge", {
-          "badge-soft-success": row.original.status === "Active",
-          "badge-soft-danger": row.original.status === "Blocked",
-        })}
-      >
-        {row.original.status}
-      </span>
-    </React.Fragment>
-  );
-};
+
+
 
 /* action column render */
 const ActionColumn = () => {
@@ -71,7 +48,7 @@ const ActionColumn = () => {
 // columns to render
 const columns = [
   {
-    Header: "Customer",
+    Header: "Student Name",
     accessor: "name",
     sort: true,
     Cell: NameColumn,
@@ -83,26 +60,24 @@ const columns = [
     sort: true,
   },
   {
-    Header: "Balance",
-    accessor: "balance",
+    Header: "Date of Birth",
+    accessor: "dob",
     sort: true,
   },
   {
-    Header: "Orders",
-    accessor: "orders",
+    Header: "Age",
+    accessor: "age",
     sort: true,
   },
   {
-    Header: "Last Order",
-    accessor: "last_order",
+    Header: "Grade",
+    accessor: "grade",
     sort: true,
-    Cell: LastOrderColumn,
   },
   {
-    Header: "Status",
-    accessor: "status",
+    Header: "Gender",
+    accessor: "gender",
     sort: true,
-    Cell: StatusColumn,
   },
   {
     Header: "Action",
@@ -124,7 +99,7 @@ const sizePerPageList = [
   },
   {
     text: "All",
-    value: customers.length,
+    value: students.length,
   },
 ];
 
@@ -151,7 +126,7 @@ const Customers = () => {
               <Row>
                 <Col sm={4}>
                   <Button className="btn btn-danger mb-2">
-                    <i className="mdi mdi-plus-circle me-2"></i> Add Customer
+                    <i className="mdi mdi-plus-circle me-2"></i> Add Students
                   </Button>
                 </Col>
 
@@ -170,7 +145,7 @@ const Customers = () => {
 
               <Table
                 columns={columns}
-                data={customers}
+                data={students}
                 pageSize={10}
                 sizePerPageList={sizePerPageList}
                 isSortable={true}

@@ -24,26 +24,20 @@ const MENU_ITEMS: MenuItemTypes[] = [
     children: [
       {
         key: "ds-dashboard-1",
-        label: "Dashboard 1",
+        label: "Dashboard ",
         url: "/dashboard-1",
         parentKey: "dashboards",
       },
     ],
   },
   { key: "apps", label: "Apps", isTitle: true },
-  {
-    key: "apps-calendar",
-    label: "Calendar",
-    isTitle: false,
-    icon: "calendar",
-    url: "/apps/calendar",
-  },
+
 
   {
     key: "apps-ecommerce",
-    label: "Ecommerce",
+    label: "Student",
     isTitle: false,
-    icon: "shopping-cart",
+    icon: "users",
     children: [
       {
         key: "ecommerce-edit-product",
@@ -65,6 +59,22 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
+
+
+
+
+  {
+    key: "apps-calendar",
+    label: "Calendar",
+    isTitle: false,
+    icon: "calendar",
+    url: "/apps/calendar",
+  },
+
+
+
+
+
   {
     key: "apps-crm",
     label: "CRM",
@@ -325,48 +335,51 @@ const MENU_ITEMS: MenuItemTypes[] = [
 
   {
     key: "menu-levels",
-    label: "Menu Levels",
+    label: "Authentication",
     isTitle: false,
     icon: "share-2",
     children: [
       {
         key: "menu-levels-1-1",
-        label: "Level 1.1",
-        url: "/",
+        label: "Register",
+        url: "/auth/register",
         parentKey: "menu-levels",
-        children: [
-          {
-            key: "menu-levels-2-1",
-            label: "Level 2.1",
-            url: "/",
-            parentKey: "menu-levels-1-1",
-            children: [
-              {
-                key: "menu-levels-3-1",
-                label: "Level 3.1",
-                url: "/",
-                parentKey: "menu-levels-2-1",
-              },
-              {
-                key: "menu-levels-3-2",
-                label: "Level 3.2",
-                url: "/",
-                parentKey: "menu-levels-2-1",
-              },
-            ],
-          },
-          {
-            key: "menu-levels-2-2",
-            label: "Level 2.2",
-            url: "/",
-            parentKey: "menu-levels-1-1",
-          },
-        ],
+    
       },
       {
         key: "menu-levels-1-2",
-        label: "Level 1.2",
-        url: "/",
+        label: "Login",
+        url: "/auth/login",
+        parentKey: "menu-levels",
+      },
+      {
+        key: "menu-levels-1-2",
+        label: "Forget Password",
+        url: "/auth/forget-password",
+        parentKey: "menu-levels",
+      },
+      {
+        key: "menu-levels-1-2",
+        label: "Confirm",
+        url: "/auth/confirm",
+        parentKey: "menu-levels",
+      },
+      {
+        key: "menu-levels-1-2",
+        label: "SignIn-SignUp",
+        url: "/auth/signin-signup",
+        parentKey: "menu-levels",
+      },
+      {
+        key: "menu-levels-1-2",
+        label: "Logout",
+        url: "/auth/logout",
+        parentKey: "menu-levels",
+      },
+      {
+        key: "menu-levels-1-2",
+        label: "Lock Screen",
+        url: "/auth/lock-screen",
         parentKey: "menu-levels",
       },
     ],
