@@ -34,52 +34,70 @@ const ActionColumn = () => {
 };
 
 const columns = [
-  {
-    Header: "Basic Info",
-    accessor: "name",
-    sort: true,
-    Cell: BasicInfoColumn,
-    className: "table-user",
-  },
-  {
-    Header: "Phone",
-    accessor: "phone",
-    sort: true,
-  },
-  {
-    Header: "Email",
-    accessor: "email",
-    sort: true,
-  },
-  {
-    Header: "Company",
-    accessor: "company",
-    sort: true,
-  },
-  {
-    Header: "Created Date",
-    accessor: "created_date",
-    sort: true,
-  },
-  {
-    Header: "Action",
-    accessor: "action",
-    sort: false,
-    Cell: ActionColumn,
-  },
-];
-
+    {
+      Header: "Basic Info",
+      accessor: "name",
+      sort: true,
+      Cell: BasicInfoColumn,
+      className: "table-user",
+    },
+    {
+      Header: "Phone",
+      accessor: "phone",
+      sort: true,
+    },
+    {
+      Header: "Email",
+      accessor: "email",
+      sort: true,
+    },
+    {
+      Header: "Company",
+      accessor: "company",
+      sort: true,
+    },
+    {
+      Header: "Designation",
+      accessor: "designation",
+      sort: true,
+    },
+    {
+      Header: "Department",
+      accessor: "department",
+      sort: true,
+    },
+    {
+      Header: "Date of Birth",
+      accessor: "date_of_birth",
+      sort: true,
+    },
+    {
+      Header: "Address",
+      accessor: "address",
+      sort: false,
+    },
+    {
+      Header: "Action",
+      accessor: "action",
+      sort: false,
+      Cell: ActionColumn,
+    },
+  ];
+// Interface for Contact Details
 interface ContactsDetailsProps {
-  contactDetails: {
-    id: number;
-    avatar: string;
-    name: string;
-    phone: string;
-    email: string;
-    company: string;
-    created_date: string;
-  }[];
-}
+    contactDetails: {
+      id: number;
+      avatar: string;
+      name: string;
+      phone: string;
+      email: string;
+      company: string;
+      designation: string;
+      department: string;
+      date_of_birth: string;
+      address: string;
+    }[];
+  }
 
 const ContactsDetails = ({ contactDetails }: ContactsDetailsProps) => {
   /*

@@ -77,13 +77,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
 
   {
     key: "apps-crm",
-    label: "CRM",
+    label: "Administration ",
     isTitle: false,
     icon: "users",
     children: [
       {
         key: "crm-contacts",
-        label: "Contacts",
+        label: "staffs",
         url: "/apps/crm/contacts",
         parentKey: "apps-crm",
       },
@@ -385,6 +385,21 @@ const MENU_ITEMS: MenuItemTypes[] = [
     ],
   },
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const HORIZONTAL_MENU_ITEMS: MenuItemTypes[] = [
   {
