@@ -7,7 +7,7 @@ import PageTitle from "../../../../components/PageTitle";
 import ContactsDetails from "./ContactsDetails";
 
 // dummy data
-import { contacts } from "./data";
+// import { contacts } from "./data";
 
 const Contacts = () => {
   return (
@@ -22,7 +22,7 @@ const Contacts = () => {
 
       <Row>
         <Col lg={12}>
-          <ContactsDetails contactDetails={contacts} />
+          <ContactsDetails  />
         </Col>
       </Row>
     </>
@@ -30,3 +30,6 @@ const Contacts = () => {
 };
 
 export default Contacts;
+
+
+// contactDetails={contacts}
