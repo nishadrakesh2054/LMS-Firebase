@@ -1,7 +1,5 @@
-import React from "react";
-
+import React from "react"
 import AllRoutes from "./routes/Routes";
-
 import { configureFakeBackend } from "./helpers";
 
 
@@ -30,12 +28,12 @@ import "./assets/scss/Icons.scss";
 
 // configure fake backend
 configureFakeBackend();
-
 const App = () => {
   return (
     <>
       <React.Fragment>
         <AllRoutes />
+      
       </React.Fragment>
     </>
   );

@@ -2,14 +2,13 @@ import React from "react";
 import { Modal, Button } from "react-bootstrap";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-// components
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 import { VerticalForm, FormInput } from "../../../../components/";
 
 interface AddContactsProps {
   show: boolean;
   onHide: () => void;
-  //   onSubmit: (value: any) => void;
   onSubmitSuccess: () => void;
 }
 
@@ -49,10 +48,12 @@ const AddContacts = ({ show, onHide, onSubmitSuccess }: AddContactsProps) => {
       }
 
       console.log("Student added successfully");
+      toast.success("Student added successfully"); // Show success toast message
       onSubmitSuccess(); // Refresh the list after adding
       onHide(); // Close the modal
     } catch (error: any) {
       console.error("Error adding student:", error.message || error);
+      toast.error("Error adding student: " + error.message); // Show error toast message
     }
   };
 
@@ -136,6 +137,8 @@ const AddContacts = ({ show, onHide, onSubmitSuccess }: AddContactsProps) => {
           </VerticalForm>
         </Modal.Body>
       </Modal>
+
+      <ToastContainer />
     </>
   );
 };

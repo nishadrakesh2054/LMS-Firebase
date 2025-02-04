@@ -3,18 +3,32 @@ import { Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Table from "../../../../components/Table";
 import AddContacts from "./AddContacts";
+import EditStudentModal from "./EditStudentModel";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
+interface Student {
+  _id: string;
+  name: string;
+  phone: number;
+  email: string;
+  age: number;
+  rollNo: string;
+  grade: string;
+}
 // action column render
 const ActionColumn = ({
   row,
   deleteStudent,
+  onEdit,
 }: {
-  row: any;
+  row: { original: Student }; // Ensure correct typing
   deleteStudent: (id: string) => void;
+  onEdit: (student: Student) => void;
 }) => {
   return (
     <>
-      <Link to="#" className="action-icon" >
+      <Link to="#" className="action-icon" onClick={() => onEdit(row.original)}>
         <i className="mdi mdi-square-edit-outline"></i>
       </Link>
       <Link
@@ -28,7 +42,10 @@ const ActionColumn = ({
   );
 };
 
-const columns = (deleteStudent: (id: string) => void) => [
+const columns = (
+  deleteStudent: (id: string) => void,
+  onEdit: (student: Student) => void
+) => [
   {
     Header: "Student Name",
     accessor: "name",
@@ -64,26 +81,23 @@ const columns = (deleteStudent: (id: string) => void) => [
     Header: "Action",
     accessor: "action",
     sort: false,
-    Cell: ({ row }: { row: any }) => (
-      <ActionColumn row={row} deleteStudent={deleteStudent} />
+    // Cell: ({ row }: { row: any }) => (
+    //     <ActionColumn row={row} deleteStudent={deleteStudent} onEdit={onEdit} />
+    // ),
+    Cell: ({ row }: { row: { original: Student } }) => (
+      <ActionColumn row={row} deleteStudent={deleteStudent} onEdit={onEdit} />
     ),
   },
 ];
-interface Student {
-  _id: string;
-  name: string;
-  phone: number;
-  email: string;
-  age: number;
-  rollNo: string;
-  grade: string;
-}
 
 const ContactsDetails: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [show, setShow] = useState<boolean>(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState<boolean>(false);
+
+  const [showEditModal, setShowEditModal] = useState<boolean>(false);
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
@@ -103,9 +117,11 @@ const ContactsDetails: React.FC = () => {
       setStudents((prevStudents) =>
         prevStudents.filter((student) => student._id !== id)
       );
+      toast.success("Student deleted successfully!");
       console.log("Student deleted successfully");
     } catch (error: any) {
       console.error("Error deleting student:", error.message || error);
+      toast.error("Error deleting student. Please try again.");
     }
   };
   const onCloseModal = () => setShow(false);
@@ -113,6 +129,47 @@ const ContactsDetails: React.FC = () => {
 
   const onSubmit = () => {
     onCloseModal();
+  };
+
+  // Open the edit modal and set the selected student
+  const handleEdit = (student: Student) => {
+    setSelectedStudent(student);
+    setShowEditModal(true);
+  };
+  // Close the edit modal
+  const handleEditClose = () => {
+    setShowEditModal(false);
+    setSelectedStudent(null);
+  };
+  // Submit edited student data
+  const handleEditSubmit = async (updatedStudent: Student) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/students/${updatedStudent._id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedStudent),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Refetch the student list after editing
+      setStudents((prevStudents) =>
+        prevStudents.map((student) =>
+          student._id === updatedStudent._id ? updatedStudent : student
+        )
+      );
+
+      handleEditClose();
+      toast.success("Student updated successfully!");
+    } catch (error: any) {
+      toast.error("Error updating student. ",error.message || error);
+      console.error("Error updating student:", error.message || error);
+    }
   };
 
   //   get all students data
@@ -177,13 +234,12 @@ const ContactsDetails: React.FC = () => {
 
       if (!response.ok)
         throw new Error(`Upload failed: ${response.statusText}`);
-
-      alert("File uploaded successfully!");
+      toast.success("File uploaded successfully!");
       setSelectedFile(null);
       setUploading(false);
     } catch (error: any) {
       console.error("Error uploading file:", error.message);
-      alert("Error uploading file. Please try again.");
+      toast.error("Error uploading file. Please try again.");
       setUploading(false);
     }
   };
@@ -275,7 +331,7 @@ const ContactsDetails: React.FC = () => {
             </Col>
           </Row>
           <Table
-            columns={columns(deleteStudent)}
+            columns={columns(deleteStudent, handleEdit)}
             data={students}
             pageSize={8}
             isSortable={true}
@@ -293,6 +349,18 @@ const ContactsDetails: React.FC = () => {
         onHide={onCloseModal}
         onSubmitSuccess={onSubmit}
       />
+
+      {/* Edit Student Modal */}
+      {showEditModal && selectedStudent && (
+        <EditStudentModal
+          show={showEditModal}
+          onHide={handleEditClose}
+          student={selectedStudent}
+          onSubmit={handleEditSubmit}
+        />
+      )}
+
+      <ToastContainer />
     </>
   );
 };
