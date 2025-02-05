@@ -1,49 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import { Row, Col, Card, Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import Select from "react-select";
-import { Editor } from "react-draft-wysiwyg";
 
 // styles
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 // components
 import PageTitle from "../../../components/PageTitle";
-import FileUploader from "../../../components/FileUploader";
 import { FormInput } from "../../../components/";
 
 const ProductEdit = () => {
-  const [editorState, setEditorState] = useState<any>();
-  const categories = [
-    {
-      label: "Shopping",
-      options: [
-        { value: "SH1", label: "Shopping 1" },
-        { value: "SH2", label: "Shopping 2" },
-        { value: "SH3", label: "Shopping 3" },
-      ],
-    },
-    {
-      label: "CRM",
-      options: [
-        { value: "CRM1", label: "Crm 1" },
-        { value: "CRM2", label: "Crm 2" },
-        { value: "CRM3", label: "Crm 3" },
-        { value: "CRM4", label: "Crm 4" },
-      ],
-    },
-    {
-      label: "eCommerce",
-      options: [
-        { value: "E1", label: "eCommerce 1" },
-        { value: "E2", label: "eCommerce 2" },
-        { value: "E3", label: "eCommerce 3" },
-        { value: "E4", label: "eCommerce 4" },
-      ],
-    },
-  ];
   /*
    * form validation schema
    */
@@ -74,9 +42,6 @@ const ProductEdit = () => {
   /**
    * On editor body change
    */
-  const onEditorStateChange = (editorStates: any) => {
-    setEditorState(editorStates);
-  };
 
   return (
     <>
@@ -89,7 +54,7 @@ const ProductEdit = () => {
             active: true,
           },
         ]}
-        title={"Add / Edit Product"}
+        title={"Add / Edit Book"}
       />
 
       <form onSubmit={handleSubmit(() => {})}>
@@ -98,63 +63,237 @@ const ProductEdit = () => {
             <Card>
               <Card.Body>
                 <h5 className="text-uppercase bg-light p-2 mt-0 mb-3">
-                  General
+                  Book Basic Details
                 </h5>
                 <FormInput
-                  name="name"
-                  label="Product Name"
-                  placeholder="e.g : Apple iMac"
+                  name="title"
+                  label="Book Title"
+                  placeholder="e.g : Enter book title"
                   containerClass={"mb-3"}
                   register={register}
-                  key="productname"
+                  key="bookTitle"
                   errors={errors}
                   control={control}
                 />
                 <FormInput
-                  name="reference"
-                  label="Reference"
-                  placeholder="e.g : Apple iMac"
+                  name="isbnNo"
+                  label="ISBN Number"
+                  placeholder="e.g : 978-3-16-148410-0"
                   containerClass={"mb-3"}
                   register={register}
-                  key="reference"
+                  key="isbnNo"
                   errors={errors}
                   control={control}
                 />
-                <Form.Group className="mb-3">
-                  <Form.Label>Product Description</Form.Label>
-                  <Editor
-                    editorState={editorState}
-                    toolbarClassName="toolbarClassName"
-                    wrapperClassName="wrapperClassName border border-1"
-                    editorClassName="editorClassName px-2"
-                    onEditorStateChange={onEditorStateChange}
-                    editorStyle={{ minHeight: "150px" }}
-                  />
-                </Form.Group>
+                <FormInput
+                  name="accessionNumber"
+                  label="Accession Number"
+                  placeholder="e.g : 12345"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="accessionNumber"
+                  errors={errors}
+                  control={control}
+                />
 
                 <FormInput
-                  type="textarea"
-                  rows="3"
-                  name="summary"
-                  label="Product Summary"
-                  placeholder="Please enter summary"
+                  name="sourceOfAcquisition"
+                  label="Source of Acquisition"
+                  placeholder="e.g : Donated"
                   containerClass={"mb-3"}
                   register={register}
-                  key="summary"
+                  key="sourceOfAcquisition"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="language"
+                  label="Language"
+                  placeholder="e.g : English"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="language"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="bookNumber"
+                  label="Book Number"
+                  placeholder="e.g : Think and rich grow"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="bookNumber"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="classNumber"
+                  label="Class Number"
+                  placeholder="e.g : 123.45"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="classNumber"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="personalAuthor"
+                  label="Personal Author"
+                  placeholder="e.g : John Doe"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="personalAuthor"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="corporateAuthor"
+                  label="Corporate Author"
+                  placeholder="e.g : Company XYZ"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="corporateAuthor"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="conferenceAuthor"
+                  label="Conference Author"
+                  placeholder="e.g : richard"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="conferenceAuthor"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="statementOfResponsibility"
+                  label="statement Of Responsibility"
+                  placeholder="e.g : richard"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="statementOfResponsibility"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="editionStatement"
+                  label="Edition Statement"
+                  placeholder="e.g : richard"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="editionStatement"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="publisherName"
+                  label="Publisher"
+                  placeholder="e.g : Penguin Books"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="publisherName"
                   errors={errors}
                   control={control}
                 />
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Categories</Form.Label>
-                  <Select
-                    className="react-select react-select-container"
-                    classNamePrefix="react-select"
-                    options={categories}
-                    id="product-category"
+                  <Form.Label>Date of Publication</Form.Label>
+                  <Controller
+                    name="dateOfPublication"
+                    control={control}
+                    render={({ field }) => (
+                      <Form.Control
+                        type="date"
+                        {...field}
+                        className="form-control"
+                      />
+                    )}
                   />
                 </Form.Group>
+              </Card.Body>
+            </Card>
+          </Col>
 
+          <Col lg={6}>
+            <Card>
+              <Card.Body>
+                <h5 className="text-uppercase mt-0 mb-3 bg-light p-2">
+                  Book Additional Details
+                </h5>
+
+                <FormInput
+                  name="callNo"
+                  label="Call Number"
+                  placeholder="e.g : 123.45"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="callNo"
+                  errors={errors}
+                  control={control}
+                />
+                <Form.Group className="mb-3">
+                  <Form.Label>Date</Form.Label>
+                  <Controller
+                    name="date"
+                    control={control}
+                    render={({ field }) => (
+                      <Form.Control
+                        type="date"
+                        {...field}
+                        className="form-control"
+                      />
+                    )}
+                  />
+                </Form.Group>
+                <FormInput
+                  name="barCode"
+                  label="Bar Code"
+                  placeholder="e.g : 123456789"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="barCode"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="seriesTitle"
+                  label="Series Title"
+                  placeholder="e.g : Programming Series"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="seriesTitle"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="seriesNo"
+                  label="Series Number"
+                  placeholder="e.g : 1"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="seriesNo"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="source"
+                  label="Source"
+                  placeholder="e.g : 5"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="source"
+                  errors={errors}
+                  control={control}
+                />
                 <FormInput
                   name="price"
                   label="Price"
@@ -165,106 +304,57 @@ const ProductEdit = () => {
                   errors={errors}
                   control={control}
                 />
-
-                <div className="mb-3">
-                  <label className="mb-2">Status</label>
-                  <div className="d-flex flex-wrap">
-                    <FormInput
-                      type="radio"
-                      name="radioInline"
-                      label="Online"
-                      value="option1"
-                      containerClass={"me-2"}
-                      defaultChecked
-                      register={register}
-                      key="inlineRadio1"
-                      errors={errors}
-                      control={control}
-                    />
-                    <FormInput
-                      type="radio"
-                      name="radioInline"
-                      label="Offline"
-                      value="option2"
-                      containerClass={"me-2"}
-                      register={register}
-                      key="inlineRadio2"
-                      errors={errors}
-                      control={control}
-                    />
-                    <FormInput
-                      type="radio"
-                      name="radioInline"
-                      label="Draft"
-                      value="option3"
-                      containerClass={"me-2"}
-                      register={register}
-                      key="inlineRadio3"
-                      errors={errors}
-                      control={control}
-                    />
-                  </div>
-                </div>
-
                 <FormInput
-                  type="textarea"
-                  rows="3"
-                  name="comment"
-                  label="Comment"
-                  placeholder="Please enter comment"
+                  name="notes"
+                  label="Notes"
+                  placeholder="Any additional notes"
                   containerClass={"mb-3"}
                   register={register}
-                  key="comment"
+                  key="notes"
                   errors={errors}
                   control={control}
                 />
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col lg={6}>
-            <Card>
-              <Card.Body>
-                <h5 className="text-uppercase mt-0 mb-3 bg-light p-2">
-                  Product Images
-                </h5>
-                <FileUploader />
-              </Card.Body>
-            </Card>
 
-            <Card>
-              <Card.Body>
-                <h5 className="text-uppercase mt-0 mb-3 bg-light p-2">
-                  Meta Data
-                </h5>
                 <FormInput
-                  name="metatitle"
-                  label="Meta title"
-                  placeholder="Enter title"
+                  name="noOfCopies"
+                  label="Number of Copies"
+                  placeholder="e.g : 5"
                   containerClass={"mb-3"}
                   register={register}
-                  key="metatitle"
+                  key="noOfCopies"
                   errors={errors}
                   control={control}
                 />
+
                 <FormInput
-                  name="metakeywords"
-                  label="Meta Keywords"
-                  placeholder="Enter keywords"
+                  name="physicalDescription"
+                  label="Physical Description"
+                  placeholder="e.g : 5"
                   containerClass={"mb-3"}
                   register={register}
-                  key="metakeywords"
+                  key="physicalDescription"
                   errors={errors}
                   control={control}
                 />
+
                 <FormInput
-                  type="textarea"
-                  rows="5"
-                  name="metadescription"
-                  label="Meta Description"
-                  placeholder="Please enter description"
+                  name="subjectAddedEntry"
+                  label="Subject Added Entry"
+                  placeholder="e.g : 5"
                   containerClass={"mb-3"}
                   register={register}
-                  key="metadescription"
+                  key="subjectAddedEntry"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="addedEntryPersonalName"
+                  label="Added Entry Personal Name"
+                  placeholder="e.g : 5"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="addedEntryPersonalName"
                   errors={errors}
                   control={control}
                 />

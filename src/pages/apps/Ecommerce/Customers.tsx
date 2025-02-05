@@ -21,10 +21,6 @@ const NameColumn = ({ row }: { row: any }) => {
   );
 };
 
-
-
-
-
 /* action column render */
 const ActionColumn = () => {
   return (
@@ -109,9 +105,9 @@ const Customers = () => {
     <React.Fragment>
       <PageTitle
         breadCrumbItems={[
-          { label: "Ecommerce", path: "/apps/ecommerce/customers" },
+          { label: "Library ", path: "/apps/ecommerce/customers" },
           {
-            label: "Customers",
+            label: "books",
             path: "/apps/ecommerce/customers",
             active: true,
           },
@@ -126,7 +122,7 @@ const Customers = () => {
               <Row>
                 <Col sm={4}>
                   <Button className="btn btn-danger mb-2">
-                    <i className="mdi mdi-plus-circle me-2"></i> Add Students
+                    <i className="mdi mdi-plus-circle me-2"></i> Add Books
                   </Button>
                 </Col>
 

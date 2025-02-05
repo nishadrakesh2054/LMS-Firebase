@@ -35,28 +35,28 @@ const MENU_ITEMS: MenuItemTypes[] = [
 
   {
     key: "apps-ecommerce",
-    label: "Student",
+    label: "Book Store",
     isTitle: false,
     icon: "users",
     children: [
       {
         key: "ecommerce-edit-product",
-        label: "Add Product",
+        label: "Add Catalogue",
         url: "/apps/ecommerce/edit-product",
         parentKey: "apps-ecommerce",
       },
       {
         key: "ecommerce-customers",
-        label: "Customers",
+        label: "Books",
         url: "/apps/ecommerce/customers",
         parentKey: "apps-ecommerce",
       },
-      {
-        key: "ecommerce-sellers",
-        label: "Sellers",
-        url: "/apps/ecommerce/sellers",
-        parentKey: "apps-ecommerce",
-      },
+    //   {
+    //     key: "ecommerce-sellers",
+    //     label: "Sellers",
+    //     url: "/apps/ecommerce/sellers",
+    //     parentKey: "apps-ecommerce",
+    //   },
     ],
   },
 
