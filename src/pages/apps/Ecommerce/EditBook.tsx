@@ -7,7 +7,8 @@ import PageTitle from "../../../components/PageTitle";
 import { FormInput } from "../../../components/";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 const schemaResolver = yupResolver(
   yup.object().shape({
@@ -49,6 +50,8 @@ const schemaResolver = yupResolver(
   })
 );
 interface BookFormData {
+  _id?: string;
+  __v?: number;
   date: Date;
   title: string;
   accessionNumber: number;
@@ -76,42 +79,86 @@ interface BookFormData {
   physicalDescription?: string | null;
   source?: string | null;
 }
-const ProductEdit: React.FC = () => {
-     const navigate = useNavigate();
-  const methods = useForm<BookFormData>({ resolver: schemaResolver });
+
+interface IBooksResponse {
+  status: number;
+  message: string;
+  data: {
+    book: BookFormData;
+  };
+}
+
+const EditBook: React.FC = () => {
+  const navigate = useNavigate();
+  const { id } = useParams<{ id: string }>();
   const {
     handleSubmit,
     register,
     control,
     formState: { errors },
-  } = methods;
+    setValue,
+  } = useForm<BookFormData>({
+    resolver: schemaResolver,
+  });
 
-  // post submit  Handle form submission
-  const onSubmit = async (data: any) => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchBookData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(`http://localhost:5000/api/books/${id}`);
+        const data: IBooksResponse = await response.json();
+        console.log("single Book data fetched ", data);
+        if (response.ok && data.data.book) {
+          Object.entries(data.data.book).forEach(([key, value]) => {
+            setValue(key as keyof BookFormData, value);
+          });
+        } else {
+          toast.error("Failed to fetch book data.");
+        }
+      } catch (error) {
+        toast.error("Error fetching book data.");
+      } finally {
+        setIsLoading(false); // Reset loading state
+      }
+    };
+
+    if (id) {
+      fetchBookData();
+    }
+  }, [id, setValue]);
+
+  // Handle Update  form submission
+  const onSubmit = async (data: BookFormData) => {
     try {
-      const response = await fetch("http://localhost:5000/api/books", {
-        method: "POST",
+      const { _id, __v, ...filteredData } = data;
+
+      const response = await fetch(`http://localhost:5000/api/books/${id}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(filteredData),
       });
 
       const result = await response.json();
       if (response.ok) {
-        console.log(result);
-        toast.success("Book added successfully");
-        navigate('/apps/ecommerce/customers')
+        toast.success("Book updated successfully");
+        setTimeout(() => {
+            navigate("/apps/ecommerce/customers");
+
+        }, 1000);
       } else {
-        toast.error("Failed to add book");
+        toast.error(result?.message || "Failed to update book");
       }
     } catch (error) {
-      console.error("Error posting data", error);
-
-      toast.error("Error posting data");
+      toast.error("Error submitting the form");
     }
   };
-
+  if (isLoading) {
+    return <div>Loading...</div>; // You can replace this with a spinner or skeleton loader
+  }
   return (
     <>
       <PageTitle
@@ -492,4 +539,4 @@ const ProductEdit: React.FC = () => {
   );
 };
 
-export default ProductEdit;
+export default EditBook;

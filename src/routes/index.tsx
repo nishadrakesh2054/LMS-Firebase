@@ -3,9 +3,6 @@ import { Route, Navigate, RouteProps } from "react-router-dom";
 
 // components
 import PrivateRoute from "./PrivateRoute";
-// import Root from './Root';
-
-// lazy load all the views
 
 // auth
 const Login = React.lazy(() => import("../pages/auth/Login"));
@@ -16,14 +13,11 @@ const Register = React.lazy(() => import("../pages/auth/Register"));
 const SignInSignUp = React.lazy(() => import("../pages/auth/SignInSignUp"));
 const LockScreen = React.lazy(() => import("../pages/auth/LockScreen"));
 
-;
-
 // landing
 const Landing = React.lazy(() => import("../pages/landing/"));
 
 // dashboard
 const Dashboard1 = React.lazy(() => import("../pages/dashboard/Dashboard1/"));
-
 
 // apps
 const CalendarApp = React.lazy(() => import("../pages/apps/Calendar/"));
@@ -33,39 +27,23 @@ const ProjectForm = React.lazy(
 );
 
 // - ecommece pages
-
 const ProductEdit = React.lazy(
   () => import("../pages/apps/Ecommerce/ProductEdit")
 );
 const Customers = React.lazy(() => import("../pages/apps/Ecommerce/Customers"));
-const Sellers = React.lazy(() => import("../pages/apps/Ecommerce/Sellers"));
+const EditBook = React.lazy(() => import("../pages/apps/Ecommerce/EditBook"));
+const BookDetails = React.lazy(() => import("../pages/apps/Ecommerce/BookDetails"));
 
 // - crm pages
 const CRMContacts = React.lazy(() => import("../pages/apps/CRM/Contacts/"));
 const CRMCustomers = React.lazy(() => import("../pages/apps/CRM/Customers/"));
 
-
-
-
-
-
-
 // -tickets
 const TicketsList = React.lazy(() => import("../pages/apps/Tickets/List/"));
-
-
-
 // extra pages
-
-
 const Error404 = React.lazy(() => import("../pages/error/Error404"));
-
 // - other
-
-
 const Gallery = React.lazy(() => import("../pages/other/Gallery/"));
-
-
 // uikit
 const Buttons = React.lazy(() => import("../pages/uikit/Buttons"));
 const Avatars = React.lazy(() => import("../pages/uikit/Avatars"));
@@ -93,24 +71,15 @@ const GeneralUI = React.lazy(() => import("../pages/uikit/GeneralUI"));
 const Typography = React.lazy(() => import("../pages/uikit/Typography"));
 const Grid = React.lazy(() => import("../pages/uikit/Grid"));
 
-
-
-
-
 // forms
 const BasicForms = React.lazy(() => import("../pages/forms/Basic"));
 const FormAdvanced = React.lazy(() => import("../pages/forms/Advanced"));
 
 const FileUpload = React.lazy(() => import("../pages/forms/FileUpload"));
 
-
 // tables
 const BasicTables = React.lazy(() => import("../pages/tables/Basic"));
 const AdvancedTables = React.lazy(() => import("../pages/tables/Advanced"));
-
-
-
-
 
 export interface RoutesProps {
   path: RouteProps["path"];
@@ -123,8 +92,6 @@ export interface RoutesProps {
   roles?: string[];
   children?: RoutesProps[];
 }
-
-
 
 // dashboards
 const dashboardRoutes: RoutesProps = {
@@ -145,8 +112,6 @@ const dashboardRoutes: RoutesProps = {
       element: <Dashboard1 />,
       route: PrivateRoute,
     },
- 
- 
   ],
 };
 
@@ -160,8 +125,6 @@ const calendarAppRoutes: RoutesProps = {
   header: "Apps",
 };
 
-
-
 const ecommerceAppRoutes = {
   path: "/apps/ecommerce",
   name: "eCommerce",
@@ -169,9 +132,6 @@ const ecommerceAppRoutes = {
   roles: ["Admin"],
   icon: "shopping-cart",
   children: [
- 
-  
-   
     {
       path: "/apps/ecommerce/edit-product",
       name: "Product Edit",
@@ -184,14 +144,19 @@ const ecommerceAppRoutes = {
       element: <Customers />,
       route: PrivateRoute,
     },
- 
+
     {
-      path: "/apps/ecommerce/sellers",
-      name: "Sellers",
-      element: <Sellers />,
+      path: "/apps/ecommerce/edit-product/:id",
+      name: "EditBook",
+      element: <EditBook />,
       route: PrivateRoute,
     },
- 
+    {
+        path: "/apps/ecommerce/book-details/:id",
+        name: "BookDetails",
+        element: <BookDetails/>,
+        route: PrivateRoute,
+      },
   ],
 };
 
@@ -202,15 +167,13 @@ const crmAppRoutes = {
   roles: ["Admin"],
   icon: "users",
   children: [
-   
     {
       path: "/apps/crm/contacts",
       name: "Contacts",
       element: <CRMContacts />,
       route: PrivateRoute,
     },
-   
-  
+
     {
       path: "/apps/crm/customers",
       name: "Customers",
@@ -220,8 +183,6 @@ const crmAppRoutes = {
   ],
 };
 
-
-
 const projectAppRoutes = {
   path: "/apps/projects",
   name: "Projects",
@@ -230,7 +191,6 @@ const projectAppRoutes = {
   icon: "uil-briefcase",
 
   children: [
-
     {
       path: "/apps/projects/create",
       name: "Create Project",
@@ -239,8 +199,6 @@ const projectAppRoutes = {
     },
   ],
 };
-
-
 
 const ticketsRoutes = {
   path: "/apps/tickets",
@@ -255,11 +213,8 @@ const ticketsRoutes = {
       element: <TicketsList />,
       route: PrivateRoute,
     },
-   
   ],
 };
-
-
 
 const appRoutes = [
   calendarAppRoutes,
@@ -267,7 +222,6 @@ const appRoutes = [
   crmAppRoutes,
   projectAppRoutes,
   ticketsRoutes,
-
 ];
 
 // pages
@@ -277,20 +231,12 @@ const extrapagesRoutes = {
   icon: "package",
   header: "Custom",
   children: [
- 
-  
- 
-
- 
-  
-   
     {
       path: "/pages/gallery",
       name: "Gallery",
       element: <Gallery />,
       route: PrivateRoute,
     },
-
   ],
 };
 
@@ -434,7 +380,6 @@ const uiRoutes = {
       ],
     },
 
-   
     {
       path: "/ui/forms",
       name: "Forms",
@@ -451,15 +396,13 @@ const uiRoutes = {
           element: <FormAdvanced />,
           route: PrivateRoute,
         },
-     
-     
+
         {
           path: "/ui/forms/upload",
           name: "File Upload",
           element: <FileUpload />,
           route: PrivateRoute,
         },
-      
       ],
     },
     {
@@ -480,8 +423,6 @@ const uiRoutes = {
         },
       ],
     },
-
-  
   ],
 };
 
@@ -529,12 +470,6 @@ const authRoutes: RoutesProps[] = [
     element: <Logout />,
     route: Route,
   },
-
-
-
-
-
-
 ];
 
 // public routes
@@ -545,15 +480,13 @@ const otherPublicRoutes = [
     element: <Landing />,
     route: Route,
   },
- 
+
   {
     path: "/error-404",
     name: "Error - 404",
     element: <Error404 />,
     route: Route,
   },
-
-
 ];
 
 // flatten the list of all nested routes

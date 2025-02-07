@@ -51,12 +51,12 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/apps/ecommerce/customers",
         parentKey: "apps-ecommerce",
       },
-    //   {
-    //     key: "ecommerce-sellers",
-    //     label: "Sellers",
-    //     url: "/apps/ecommerce/sellers",
-    //     parentKey: "apps-ecommerce",
-    //   },
+      {
+        key: "ecommerce-sellers",
+        label: "Sellers",
+        url: "/apps/ecommerce/sellers",
+        parentKey: "apps-ecommerce",
+      },
     ],
   },
 
