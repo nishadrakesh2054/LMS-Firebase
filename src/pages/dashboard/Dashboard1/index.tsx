@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import Statistics from "./Statistics";
 
 // components
 import HyperDatepicker from "../../../components/Datepicker";
-
-
 
 import UsersBalances from "./UsersBalances";
 import RevenueHistory from "./RevenueHistory";
 
 import { balances, revenueHistory } from "./data";
+import PageTitle from "../../../components/PageTitle";
 
 const Dashboard1 = () => {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  /*
-   * handle date change
-   */
   const onDateChange = (date: Date) => {
     if (date) {
       setSelectedDate(date);
@@ -25,6 +22,48 @@ const Dashboard1 = () => {
 
   return (
     <>
+      <PageTitle
+        breadCrumbItems={[
+          { label: "Tickets", path: "/apps/tickets/list" },
+          { label: "Hello Admin", path: "/apps/tickets/list", active: true },
+        ]}
+        title={"Hello Admin"}
+      />
+      <Row>
+        <Col md={6} xl={3}>
+          <Statistics
+            icon="fe-tag"
+            variant="primary"
+            stats="1000"
+            desc="Total Visitors"
+          />
+        </Col>
+        <Col md={6} xl={3}>
+          <Statistics
+            icon="fe-clock"
+            variant="warning"
+            stats="350"
+            desc=" Borrowed Books"
+          />
+        </Col>
+        <Col md={6} xl={3}>
+          <Statistics
+            icon="fe-check-circle"
+            variant="success"
+            stats="34"
+            desc="Overdue Books"
+          />
+        </Col>
+        <Col md={6} xl={3}>
+          <Statistics
+            icon="fe-trash-2"
+            variant="danger"
+            stats="5000"
+            desc="Total Members"
+          />
+        </Col>
+      </Row>
+
       <Row>
         <Col>
           <div className="page-title-box">
@@ -47,14 +86,10 @@ const Dashboard1 = () => {
                 </button>
               </form>
             </div>
-            <h4 className="page-title">Dashboard</h4>
+            <h4 className="page-title">Book and Student Data</h4>
           </div>
         </Col>
       </Row>
-
-   
-
-     
 
       <Row>
         <Col xl={6}>

@@ -66,6 +66,7 @@ interface BookFormData {
   dateOfPublication?: Date | null;
   price: number;
   noOfCopies: number;
+  placeOfPublication?: string;
   callNo: string;
   barCodes: string[];
   seriesTitle?: string | null;
@@ -77,7 +78,7 @@ interface BookFormData {
   source?: string | null;
 }
 const ProductEdit: React.FC = () => {
-     const navigate = useNavigate();
+  const navigate = useNavigate();
   const methods = useForm<BookFormData>({ resolver: schemaResolver });
   const {
     handleSubmit,
@@ -100,8 +101,11 @@ const ProductEdit: React.FC = () => {
       const result = await response.json();
       if (response.ok) {
         console.log(result);
-        toast.success("Book added successfully");
-        navigate('/apps/ecommerce/customers')
+        setTimeout(() => {
+          toast.success("Book added successfully");
+        }, 1000);
+
+        navigate("/apps/ecommerce/customers");
       } else {
         toast.error("Failed to add book");
       }
@@ -147,7 +151,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="isbnNo"
                   label="ISBN Number"
-                  placeholder="e.g : 978-3-16-148410-0"
+                  placeholder="Enter ISBN number (e.g., 978-3-16-148410-0)"
                   containerClass={"mb-3"}
                   register={register}
                   key="isbnNo"
@@ -168,7 +172,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="sourceOfAcquisition"
                   label="Source of Acquisition"
-                  placeholder="e.g : Donated"
+                  placeholder="Enter source (e.g., Purchased, Donated)"
                   containerClass={"mb-3"}
                   register={register}
                   key="sourceOfAcquisition"
@@ -179,7 +183,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="language"
                   label="Language"
-                  placeholder="e.g : English"
+                  placeholder="Enter book language (e.g., English, Nepali)"
                   containerClass={"mb-3"}
                   register={register}
                   key="language"
@@ -190,7 +194,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="bookNumber"
                   label="Book Number"
-                  placeholder="e.g : 24-04"
+                  placeholder="Enter book number"
                   containerClass={"mb-3"}
                   register={register}
                   key="bookNumber"
@@ -201,7 +205,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="classNumber"
                   label="Class Number"
-                  placeholder="e.g : 123.45"
+                  placeholder="Enter class number (e.g., 123.45)"
                   containerClass={"mb-3"}
                   register={register}
                   key="classNumber"
@@ -212,7 +216,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="personalAuthor"
                   label="Personal Author"
-                  placeholder="e.g : John Doe"
+                  placeholder="Enter author's name (e.g., John Doe)"
                   containerClass={"mb-3"}
                   register={register}
                   key="personalAuthor"
@@ -222,7 +226,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="corporateAuthor"
                   label="Corporate Author"
-                  placeholder="e.g : Company XYZ"
+                  placeholder="Enter corporate author (e.g., ABC Publishing House)"
                   containerClass={"mb-3"}
                   register={register}
                   key="corporateAuthor"
@@ -233,7 +237,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="conferenceAuthor"
                   label="Conference Author"
-                  placeholder="e.g : richard"
+                  placeholder="Enter conference name (e.g., Tech Summit 2025)"
                   containerClass={"mb-3"}
                   register={register}
                   key="conferenceAuthor"
@@ -244,7 +248,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="statementOfResponsibility"
                   label="statement Of Responsibility"
-                  placeholder="e.g : richard"
+                  placeholder="Enter responsibility statement"
                   containerClass={"mb-3"}
                   register={register}
                   key="statementOfResponsibility"
@@ -254,7 +258,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="editionStatement"
                   label="Edition Statement"
-                  placeholder="e.g : richard"
+                  placeholder="Enter edition (e.g., 2nd Edition)"
                   containerClass={"mb-3"}
                   register={register}
                   key="editionStatement"
@@ -265,7 +269,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="publisherName"
                   label="Publisher"
-                  placeholder="e.g : Penguin Books"
+                  placeholder="Enter publisher name (e.g., Penguin Books)"
                   containerClass={"mb-3"}
                   register={register}
                   key="publisherName"
@@ -286,7 +290,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="callNo"
                   label="Call Number"
-                  placeholder="e.g : 123.45"
+                  placeholder="Enter call number (e.g., 123.45)"
                   containerClass={"mb-3"}
                   register={register}
                   key="callNo"
@@ -299,6 +303,7 @@ const ProductEdit: React.FC = () => {
                   <Controller
                     name="date"
                     control={control}
+                  
                     defaultValue={undefined} // Ensure empty string initially
                     render={({ field }) => (
                       <Form.Control
@@ -306,7 +311,7 @@ const ProductEdit: React.FC = () => {
                         {...field}
                         value={
                           field.value
-                            ? format(new Date(field.value), "yyyy-MM-dd")
+                            ? format(new Date(field.value), "  yyyy-MM-dd")
                             : ""
                         } // Convert Date to string
                         onChange={(e) => field.onChange(e.target.value)} // Ensure controlled component
@@ -348,8 +353,9 @@ const ProductEdit: React.FC = () => {
                       <Form.Control
                         {...field}
                         type="text"
-                        placeholder="e.g : 123456789"
+                        placeholder="Enter barcodes (comma-separated)"
                         className="form-control"
+                  
                         onChange={(e) => {
                           const values = e.target.value
                             .split(",")
@@ -360,59 +366,6 @@ const ProductEdit: React.FC = () => {
                     )}
                   />
                 </Form.Group>
-
-                <FormInput
-                  name="seriesTitle"
-                  label="Series Title"
-                  placeholder="e.g : Programming Series"
-                  containerClass={"mb-3"}
-                  register={register}
-                  key="seriesTitle"
-                  errors={errors}
-                  control={control}
-                />
-
-                <FormInput
-                  name="seriesNo"
-                  label="Series Number"
-                  placeholder="e.g : 1"
-                  containerClass={"mb-3"}
-                  register={register}
-                  key="seriesNo"
-                  errors={errors}
-                  control={control}
-                />
-                <FormInput
-                  name="source"
-                  label="Source"
-                  placeholder="e.g : 5"
-                  containerClass={"mb-3"}
-                  register={register}
-                  key="source"
-                  errors={errors}
-                  control={control}
-                />
-                <FormInput
-                  name="price"
-                  label="Price"
-                  placeholder="Enter amount"
-                  containerClass={"mb-3"}
-                  register={register}
-                  key="price"
-                  errors={errors}
-                  control={control}
-                />
-                <FormInput
-                  name="notes"
-                  label="Notes"
-                  placeholder="Any additional notes"
-                  containerClass={"mb-3"}
-                  register={register}
-                  key="notes"
-                  errors={errors}
-                  control={control}
-                />
-
                 <FormInput
                   name="noOfCopies"
                   label="Number of Copies"
@@ -425,9 +378,63 @@ const ProductEdit: React.FC = () => {
                 />
 
                 <FormInput
+                  name="seriesTitle"
+                  label="Series Title"
+                  placeholder="Enter series title"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="seriesTitle"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
+                  name="seriesNo"
+                  label="Series Number"
+                  placeholder="Enter series number (e.g., 1)"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="seriesNo"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="source"
+                  label="Source"
+                  placeholder="Enter source name"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="source"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="price"
+                  label="Price"
+                  placeholder="Enter price"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="price"
+                  errors={errors}
+                  control={control}
+                />
+                <FormInput
+                  name="notes"
+                  label="Notes"
+                  placeholder="Enter additional notes"
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="notes"
+                  errors={errors}
+                  control={control}
+                />
+
+             
+
+                <FormInput
                   name="physicalDescription"
                   label="Physical Description"
-                  placeholder="e.g : 5"
+                  placeholder="Enter physical description (e.g., 300 pages, hardcover)"
                   containerClass={"mb-3"}
                   register={register}
                   key="physicalDescription"
@@ -436,9 +443,20 @@ const ProductEdit: React.FC = () => {
                 />
 
                 <FormInput
+                  name="placeOfPublication"
+                  label="Place of Publication"
+                  placeholder="Enter place of publication "
+                  containerClass={"mb-3"}
+                  register={register}
+                  key="placeOfPublication"
+                  errors={errors}
+                  control={control}
+                />
+
+                <FormInput
                   name="subjectAddedEntry"
                   label="Subject Added Entry"
-                  placeholder="e.g : 5"
+                  placeholder="Enter subject (e.g., Artificial Intelligence)"
                   containerClass={"mb-3"}
                   register={register}
                   key="subjectAddedEntry"
@@ -449,7 +467,7 @@ const ProductEdit: React.FC = () => {
                 <FormInput
                   name="addedEntryPersonalName"
                   label="Added Entry Personal Name"
-                  placeholder="e.g : 5"
+                  placeholder="Enter  personal name"
                   containerClass={"mb-3"}
                   register={register}
                   key="addedEntryPersonalName"

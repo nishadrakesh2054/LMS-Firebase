@@ -53,7 +53,6 @@ const BookDetails: React.FC = () => {
         setIsLoading(true);
         const response = await fetch(`http://localhost:5000/api/books/${id}`);
         const data: IBooksResponse = await response.json();
-        console.log("single Book data fetched ", data.data.book);
 
         if (response.ok && data.data.book) {
           setBookData(data.data.book);

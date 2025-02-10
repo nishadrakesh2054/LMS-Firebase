@@ -17,7 +17,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
   { key: "navigation", label: "Navigation", isTitle: true },
   {
     key: "dashboards",
-    label: "Dashboards",
+    label: "Library Management",
     isTitle: false,
     icon: "airplay",
     badge: { variant: "success", text: "4" },
@@ -35,13 +35,13 @@ const MENU_ITEMS: MenuItemTypes[] = [
 
   {
     key: "apps-ecommerce",
-    label: "Book Store",
+    label: "Catalogue Management",
     isTitle: false,
     icon: "users",
     children: [
       {
         key: "ecommerce-edit-product",
-        label: "Add Catalogue",
+        label: "Add New Book",
         url: "/apps/ecommerce/edit-product",
         parentKey: "apps-ecommerce",
       },
@@ -51,18 +51,50 @@ const MENU_ITEMS: MenuItemTypes[] = [
         url: "/apps/ecommerce/customers",
         parentKey: "apps-ecommerce",
       },
+    //   {
+    //     key: "ecommerce-sellers",
+    //     label: "Sellers",
+    //     url: "/apps/ecommerce/sellers",
+    //     parentKey: "apps-ecommerce",
+    //   },
+    ],
+  },
+// Adminstration  settings
+  {
+    key: "apps-crm",
+    label: "Administration ",
+    isTitle: false,
+    icon: "users",
+    children: [
       {
-        key: "ecommerce-sellers",
-        label: "Sellers",
-        url: "/apps/ecommerce/sellers",
-        parentKey: "apps-ecommerce",
+        key: "crm-contacts",
+        label: "Student Management",
+        url: "/apps/crm/contacts",
+        parentKey: "apps-crm",
+      },
+
+      {
+        key: "crm-customers",
+        label: "Staff Management",
+        url: "/apps/crm/customers",
+        parentKey: "apps-crm",
+      },
+      {
+        key: "crm-customers",
+        label: "Department Management",
+        url: "/apps/crm/customers",
+        parentKey: "apps-crm",
+      },
+      {
+        key: "crm-customers",
+        label: "",
+        url: "/apps/crm/customers",
+        parentKey: "apps-crm",
       },
     ],
   },
 
-
-
-
+// calendar  settings
   {
     key: "apps-calendar",
     label: "Calendar",
@@ -75,28 +107,7 @@ const MENU_ITEMS: MenuItemTypes[] = [
 
 
 
-  {
-    key: "apps-crm",
-    label: "Administration ",
-    isTitle: false,
-    icon: "users",
-    children: [
-      {
-        key: "crm-contacts",
-        label: "staffs",
-        url: "/apps/crm/contacts",
-        parentKey: "apps-crm",
-      },
-
-      {
-        key: "crm-customers",
-        label: "Customers",
-        url: "/apps/crm/customers",
-        parentKey: "apps-crm",
-      },
-    ],
-  },
-
+ 
   {
     key: "apps-projects",
     label: "Projects",
@@ -112,15 +123,18 @@ const MENU_ITEMS: MenuItemTypes[] = [
     ],
   },
 
+
+
+
   {
     key: "apps-tickets",
-    label: "Tickets",
+    label: "Blacklist", 
     isTitle: false,
     icon: "aperture",
     children: [
       {
         key: "tickets-list",
-        label: "List",
+        label: "Block Users",
         url: "/apps/tickets/list",
         parentKey: "apps-tickets",
       },
@@ -150,188 +164,196 @@ const MENU_ITEMS: MenuItemTypes[] = [
     ],
   },
   { key: "components", label: "Components", isTitle: true },
-  {
-    key: "base-ui",
-    label: "Base UI",
-    isTitle: false,
-    icon: "pocket",
-    children: [
-      {
-        key: "base-ui-buttons",
-        label: "Buttons",
-        url: "/ui/buttons",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-cards",
-        label: "Cards",
-        url: "/ui/cards",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-avatars",
-        label: "Avatars",
-        url: "/ui/avatars",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-portlets",
-        label: "Portlets",
-        url: "/ui/portlets",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-tabs-accordions",
-        label: "Tabs & Accordions",
-        url: "/ui/tabs-accordions",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-modals",
-        label: "Modals",
-        url: "/ui/modals",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-progress",
-        label: "Progress",
-        url: "/ui/progress",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-notifications",
-        label: "Notifications",
-        url: "/ui/notifications",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-offcanvas",
-        label: "Offcanvas",
-        url: "/ui/offcanvas",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-placeholders",
-        label: "Placeholders",
-        url: "/ui/placeholders",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-spinners",
-        label: "Spinners",
-        url: "/ui/spinners",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-images",
-        label: "Images",
-        url: "/ui/images",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-carousel",
-        label: "Carousel",
-        url: "/ui/carousel",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-listgroups",
-        label: "List Groups",
-        url: "/ui/listgroups",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-embedvideo",
-        label: "Embed Video",
-        url: "/ui/embedvideo",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-dropdown",
-        label: "Dropdowns",
-        url: "/ui/dropdowns",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-ribbons",
-        label: "Ribbons",
-        url: "/ui/ribbons",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-tooltips-popovers",
-        label: "Tooltips & Popovers",
-        url: "/ui/tooltips-popovers",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-general",
-        label: "General UI",
-        url: "/ui/general",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-typography",
-        label: "Typography",
-        url: "/ui/typography",
-        parentKey: "base-ui",
-      },
-      {
-        key: "base-ui-grid",
-        label: "Grid",
-        url: "/ui/grid",
-        parentKey: "base-ui",
-      },
-    ],
-  },
 
-  {
-    key: "forms",
-    label: "Forms",
-    isTitle: false,
-    icon: "bookmark",
-    children: [
-      {
-        key: "form-basic",
-        label: "General Elements",
-        url: "/ui/forms/basic",
-        parentKey: "forms",
-      },
-      {
-        key: "form-advanced",
-        label: "Form Advanced",
-        url: "/ui/forms/advanced",
-        parentKey: "forms",
-      },
+//  UI components
+//   {
+//     key: "base-ui",
+//     label: "Base UI",
+//     isTitle: false,
+//     icon: "pocket",
+//     children: [
+//       {
+//         key: "base-ui-buttons",
+//         label: "Buttons",
+//         url: "/ui/buttons",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-cards",
+//         label: "Cards",
+//         url: "/ui/cards",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-avatars",
+//         label: "Avatars",
+//         url: "/ui/avatars",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-portlets",
+//         label: "Portlets",
+//         url: "/ui/portlets",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-tabs-accordions",
+//         label: "Tabs & Accordions",
+//         url: "/ui/tabs-accordions",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-modals",
+//         label: "Modals",
+//         url: "/ui/modals",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-progress",
+//         label: "Progress",
+//         url: "/ui/progress",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-notifications",
+//         label: "Notifications",
+//         url: "/ui/notifications",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-offcanvas",
+//         label: "Offcanvas",
+//         url: "/ui/offcanvas",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-placeholders",
+//         label: "Placeholders",
+//         url: "/ui/placeholders",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-spinners",
+//         label: "Spinners",
+//         url: "/ui/spinners",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-images",
+//         label: "Images",
+//         url: "/ui/images",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-carousel",
+//         label: "Carousel",
+//         url: "/ui/carousel",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-listgroups",
+//         label: "List Groups",
+//         url: "/ui/listgroups",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-embedvideo",
+//         label: "Embed Video",
+//         url: "/ui/embedvideo",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-dropdown",
+//         label: "Dropdowns",
+//         url: "/ui/dropdowns",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-ribbons",
+//         label: "Ribbons",
+//         url: "/ui/ribbons",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-tooltips-popovers",
+//         label: "Tooltips & Popovers",
+//         url: "/ui/tooltips-popovers",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-general",
+//         label: "General UI",
+//         url: "/ui/general",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-typography",
+//         label: "Typography",
+//         url: "/ui/typography",
+//         parentKey: "base-ui",
+//       },
+//       {
+//         key: "base-ui-grid",
+//         label: "Grid",
+//         url: "/ui/grid",
+//         parentKey: "base-ui",
+//       },
+//     ],
+//   },
 
-      {
-        key: "form-upload",
-        label: "File Uploads",
-        url: "/ui/forms/upload",
-        parentKey: "forms",
-      },
-    ],
-  },
-  {
-    key: "tables",
-    label: "Tables",
-    isTitle: false,
-    icon: "grid",
-    children: [
-      {
-        key: "table-basic",
-        label: "Basic Tables",
-        url: "/ui/tables/basic",
-        parentKey: "tables",
-      },
-      {
-        key: "table-advanced",
-        label: "Advanced Tables",
-        url: "/ui/tables/advanced",
-        parentKey: "tables",
-      },
-    ],
-  },
+
+// form UI elements
+//   {
+//     key: "forms",
+//     label: "Forms",
+//     isTitle: false,
+//     icon: "bookmark",
+//     children: [
+//       {
+//         key: "form-basic",
+//         label: "General Elements",
+//         url: "/ui/forms/basic",
+//         parentKey: "forms",
+//       },
+//       {
+//         key: "form-advanced",
+//         label: "Form Advanced",
+//         url: "/ui/forms/advanced",
+//         parentKey: "forms",
+//       },
+
+//       {
+//         key: "form-upload",
+//         label: "File Uploads",
+//         url: "/ui/forms/upload",
+//         parentKey: "forms",
+//       },
+//     ],
+//   },
+
+
+
+// Table elements
+//   {
+//     key: "tables",
+//     label: "Tables",
+//     isTitle: false,
+//     icon: "grid",
+//     children: [
+//       {
+//         key: "table-basic",
+//         label: "Basic Tables",
+//         url: "/ui/tables/basic",
+//         parentKey: "tables",
+//       },
+//       {
+//         key: "table-advanced",
+//         label: "Advanced Tables",
+//         url: "/ui/tables/advanced",
+//         parentKey: "tables",
+//       },
+//     ],
+//   },
 
   {
     key: "menu-levels",
@@ -384,6 +406,8 @@ const MENU_ITEMS: MenuItemTypes[] = [
       },
     ],
   },
+
+  
 ];
 
 

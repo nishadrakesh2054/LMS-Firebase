@@ -3,6 +3,7 @@ import { Route, Navigate, RouteProps } from "react-router-dom";
 
 // components
 import PrivateRoute from "./PrivateRoute";
+// import Sellers from "../pages/apps/Ecommerce/Sellers";
 
 // auth
 const Login = React.lazy(() => import("../pages/auth/Login"));
@@ -32,7 +33,9 @@ const ProductEdit = React.lazy(
 );
 const Customers = React.lazy(() => import("../pages/apps/Ecommerce/Customers"));
 const EditBook = React.lazy(() => import("../pages/apps/Ecommerce/EditBook"));
-const BookDetails = React.lazy(() => import("../pages/apps/Ecommerce/BookDetails"));
+const BookDetails = React.lazy(
+  () => import("../pages/apps/Ecommerce/BookDetails")
+);
 
 // - crm pages
 const CRMContacts = React.lazy(() => import("../pages/apps/CRM/Contacts/"));
@@ -144,7 +147,6 @@ const ecommerceAppRoutes = {
       element: <Customers />,
       route: PrivateRoute,
     },
-
     {
       path: "/apps/ecommerce/edit-product/:id",
       name: "EditBook",
@@ -152,11 +154,17 @@ const ecommerceAppRoutes = {
       route: PrivateRoute,
     },
     {
-        path: "/apps/ecommerce/book-details/:id",
-        name: "BookDetails",
-        element: <BookDetails/>,
-        route: PrivateRoute,
-      },
+      path: "/apps/ecommerce/book-details/:id",
+      name: "BookDetails",
+      element: <BookDetails />,
+      route: PrivateRoute,
+    },
+    // {
+    //   path: "/apps/ecommerce/sellers",
+    //   name: "Customers",
+    //   element: <Sellers />,
+    //   route: PrivateRoute,
+    // },
   ],
 };
 
