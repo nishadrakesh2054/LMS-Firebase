@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 interface BookFormData {
-  _id?: string;
-  __v?: number;
+  id?: number;
   date: Date;
   title: string;
   accessionNumber: number;
@@ -37,9 +36,9 @@ interface BookFormData {
 interface IBooksResponse {
   status: number;
   message: string;
-  data: {
-    book: BookFormData;
-  };
+
+
+data:BookFormData
 }
 
 const BookDetails: React.FC = () => {
@@ -53,9 +52,11 @@ const BookDetails: React.FC = () => {
         setIsLoading(true);
         const response = await fetch(`http://localhost:5000/api/books/${id}`);
         const data: IBooksResponse = await response.json();
+      
+        console.log("books response", data.data);
 
-        if (response.ok && data.data.book) {
-          setBookData(data.data.book);
+        if (response.ok && data.data) {
+          setBookData(data.data);
         } else {
           console.error("Failed to fetch book data");
         }

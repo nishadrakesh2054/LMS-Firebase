@@ -8,12 +8,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
 interface Student {
-  _id: string;
+  id: number;
   name: string;
-  phone: number;
+  phone: string;
   email: string;
   age: number;
-  rollNo: string;
+  rollNo: number;
   grade: string;
 }
 // action column render
@@ -23,7 +23,7 @@ const ActionColumn = ({
   onEdit,
 }: {
   row: { original: Student }; // Ensure correct typing
-  deleteStudent: (id: string) => void;
+  deleteStudent: (id: number) => void;
   onEdit: (student: Student) => void;
 }) => {
   return (
@@ -34,7 +34,7 @@ const ActionColumn = ({
       <Link
         to="#"
         className="action-icon"
-        onClick={() => deleteStudent(row.original._id)}
+        onClick={() => deleteStudent(row.original.id)}
       >
         <i className="mdi mdi-delete"></i>
       </Link>
@@ -43,7 +43,7 @@ const ActionColumn = ({
 };
 
 const columns = (
-  deleteStudent: (id: string) => void,
+  deleteStudent: (id: number) => void,
   onEdit: (student: Student) => void
 ) => [
   {
@@ -81,9 +81,7 @@ const columns = (
     Header: "Action",
     accessor: "action",
     sort: false,
-    // Cell: ({ row }: { row: any }) => (
-    //     <ActionColumn row={row} deleteStudent={deleteStudent} onEdit={onEdit} />
-    // ),
+
     Cell: ({ row }: { row: { original: Student } }) => (
       <ActionColumn row={row} deleteStudent={deleteStudent} onEdit={onEdit} />
     ),
@@ -101,7 +99,7 @@ const ContactsDetails: React.FC = () => {
 
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const deleteStudent = async (id: string) => {
+  const deleteStudent = async (id: number) => {
     if (!window.confirm("Are you sure you want to delete this student?"))
       return;
 
@@ -115,7 +113,7 @@ const ContactsDetails: React.FC = () => {
       }
 
       setStudents((prevStudents) =>
-        prevStudents.filter((student) => student._id !== id)
+        prevStudents.filter((student) => student.id !== id)
       );
       toast.success("Student deleted successfully!");
       console.log("Student deleted successfully");
@@ -145,7 +143,7 @@ const ContactsDetails: React.FC = () => {
   const handleEditSubmit = async (updatedStudent: Student) => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/students/${updatedStudent._id}`,
+        `http://localhost:5000/api/students/${updatedStudent.id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
@@ -160,43 +158,43 @@ const ContactsDetails: React.FC = () => {
       // Refetch the student list after editing
       setStudents((prevStudents) =>
         prevStudents.map((student) =>
-          student._id === updatedStudent._id ? updatedStudent : student
+          student.id === updatedStudent.id ? updatedStudent : student
         )
       );
 
       handleEditClose();
       toast.success("Student updated successfully!");
     } catch (error: any) {
-      toast.error("Error updating student. ",error.message || error);
+      toast.error("Error updating student. ", error.message || error);
       console.error("Error updating student:", error.message || error);
     }
   };
 
-  //   get all students data
   useEffect(() => {
-    const controller = new AbortController(); // Create an abort controller
+    const controller = new AbortController();
     const fetchStudents = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/students", {
           signal: controller.signal,
         });
+
         if (!response.ok)
           throw new Error(`HTTP error! Status: ${response.status}`);
 
-        const data: Student[] = await response.json();
-        setStudents(data);
-      } catch (error: any) {
-        if (error.name === "AbortError") {
-          console.log("Fetch aborted");
-        } else {
-          console.error("Error fetching students:", error.message || error);
+        const data = await response.json();
+        console.log("Fetched data:", data.students);
+        if (!data.students || !Array.isArray(data.students)) {
+          throw new Error("Expected an array but received something else");
         }
+
+        setStudents(data.students);
+      } catch (error: any) {
+        console.error("Error fetching students:", error.message || error);
       }
     };
 
     fetchStudents();
-
-    return () => controller.abort(); // Cleanup function
+    return () => controller.abort();
   }, []);
 
   // Open file picker when "+" button is clicked

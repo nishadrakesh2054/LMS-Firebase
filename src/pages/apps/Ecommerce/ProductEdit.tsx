@@ -49,7 +49,7 @@ const schemaResolver = yupResolver(
   })
 );
 interface BookFormData {
-  date: Date;
+  date: Date | null;
   title: string;
   accessionNumber: number;
   isbnNo: string;
@@ -302,8 +302,7 @@ const ProductEdit: React.FC = () => {
                   <Form.Label>Date</Form.Label>
                   <Controller
                     name="date"
-                    control={control}
-                  
+                    control={control} 
                     defaultValue={undefined} // Ensure empty string initially
                     render={({ field }) => (
                       <Form.Control
@@ -311,10 +310,10 @@ const ProductEdit: React.FC = () => {
                         {...field}
                         value={
                           field.value
-                            ? format(new Date(field.value), "  yyyy-MM-dd")
+                            ? format(new Date(field.value), "yyyy-MM-dd")
                             : ""
                         } // Convert Date to string
-                        onChange={(e) => field.onChange(e.target.value)} // Ensure controlled component
+                        onChange={(e) => field.onChange(e.target.value)} 
                         className="form-control"
                       />
                     )}
@@ -326,7 +325,7 @@ const ProductEdit: React.FC = () => {
                   <Controller
                     name="dateOfPublication"
                     control={control}
-                    defaultValue={undefined} // Ensure initial value consistency
+                    defaultValue={undefined} 
                     render={({ field }) => (
                       <Form.Control
                         type="date"

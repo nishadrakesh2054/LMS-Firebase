@@ -10,7 +10,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 // Book interface based on the schema
 export interface IBook {
-  _id: string;
+  id: number;
   date: Date;
   accessionNumber: number;
   isbnNo: string;
@@ -53,8 +53,8 @@ const ActionColumn = ({
   deleteBook,
   bookId,
 }: {
-  deleteBook: (id: string) => void;
-  bookId: string;
+  deleteBook: (id: number) => void;
+  bookId: number;
 }) => {
   return (
     <React.Fragment>
@@ -97,7 +97,6 @@ const Customers = () => {
       try {
         const response = await fetch("http://localhost:5000/api/books");
         const data: IBooksResponse = await response.json();
-        console.log("books response", data.data.books);
         setBooks(data.data.books);
         setLoading(false);
       } catch (err) {
@@ -126,16 +125,16 @@ const Customers = () => {
   if (error) return <div>{error}</div>;
 
   // Delete book functionality
-  const deleteBook = async (id: string) => {
+  const deleteBook = async (id: number) => {
     try {
       const response = await fetch(`http://localhost:5000/api/books/${id}`, {
         method: "DELETE",
       });
       const data = await response.json();
       if (data.status === 200) {
-        const updatedBooks = books.filter((book) => book._id !== id);
+        const updatedBooks = books.filter((book) => book.id !== id);
         setBooks(updatedBooks);
-        toast.success("Book updated successfully!");
+        toast.success("Book Deleted successfully!");
       } else {
         console.error("Error deleting book", data.message);
         toast.error("Error deleting book. Please try again.");
@@ -204,7 +203,7 @@ const Customers = () => {
       accessor: "action",
       sort: false,
       Cell: ({ row }: { row: { original: IBook } }) => (
-        <ActionColumn bookId={row.original._id} deleteBook={deleteBook} />
+        <ActionColumn bookId={row.original.id} deleteBook={deleteBook} />
       ),
     },
   ];

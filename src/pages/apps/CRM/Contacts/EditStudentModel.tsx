@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 interface Student {
-  _id: string;
+  id: number;
   name: string;
-  phone: number;
+  phone: string;
   email: string;
   age: number;
-  rollNo: string;
+  rollNo: number;
   grade: string;
 }
 
@@ -19,7 +19,12 @@ interface EditStudentModalProps {
   onSubmit: (updatedStudent: Student) => void;
 }
 
-const EditStudentModal: React.FC<EditStudentModalProps> = ({ show, onHide, student, onSubmit }) => {
+const EditStudentModal: React.FC<EditStudentModalProps> = ({
+  show,
+  onHide,
+  student,
+  onSubmit,
+}) => {
   const [formData, setFormData] = useState<Student>(student);
 
   // Update form data when student changes
@@ -45,7 +50,9 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ show, onHide, stude
         <Form onSubmit={handleSubmit}>
           {["name", "phone", "email", "age", "rollNo", "grade"].map((field) => (
             <Form.Group controlId={field} key={field} className="mb-3">
-              <Form.Label>{field.charAt(0).toUpperCase() + field.slice(1)}</Form.Label>
+              <Form.Label>
+                {field.charAt(0).toUpperCase() + field.slice(1)}
+              </Form.Label>
               <Form.Control
                 type={field === "phone" || field === "age" ? "number" : "text"}
                 name={field}

@@ -50,8 +50,7 @@ const schemaResolver = yupResolver(
   })
 );
 interface BookFormData {
-  _id?: string;
-  __v?: number;
+  id?: number;
   date: Date;
   title: string;
   accessionNumber: number;
@@ -83,9 +82,9 @@ interface BookFormData {
 interface IBooksResponse {
   status: number;
   message: string;
-  data: {
-    book: BookFormData;
-  };
+
+    data: BookFormData;
+
 }
 
 const EditBook: React.FC = () => {
@@ -110,8 +109,8 @@ const EditBook: React.FC = () => {
         const response = await fetch(`http://localhost:5000/api/books/${id}`);
         const data: IBooksResponse = await response.json();
         console.log("single Book data fetched ", data);
-        if (response.ok && data.data.book) {
-          Object.entries(data.data.book).forEach(([key, value]) => {
+        if (response.ok && data.data) {
+          Object.entries(data.data).forEach(([key, value]) => {
             setValue(key as keyof BookFormData, value);
           });
         } else {
@@ -132,7 +131,7 @@ const EditBook: React.FC = () => {
   // Handle Update  form submission
   const onSubmit = async (data: BookFormData) => {
     try {
-      const { _id, __v, ...filteredData } = data;
+      const { id, ...filteredData } = data;
 
       const response = await fetch(`http://localhost:5000/api/books/${id}`, {
         method: "PUT",
