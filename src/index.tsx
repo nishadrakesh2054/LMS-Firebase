@@ -1,8 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import "./i18n";
-
 import App from "./App";
 
 import { Provider } from "react-redux";
@@ -18,5 +15,4 @@ root.render(
       </BrowserRouter>
     </React.Fragment>
   </Provider>
-  
 );
