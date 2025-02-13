@@ -45,8 +45,7 @@ const CRMCustomers = React.lazy(() => import("../pages/apps/CRM/Customers/"));
 const TicketsList = React.lazy(() => import("../pages/apps/Tickets/List/"));
 // extra pages
 const Error404 = React.lazy(() => import("../pages/error/Error404"));
-// - other
-const Gallery = React.lazy(() => import("../pages/other/Gallery/"));
+
 // uikit
 const Buttons = React.lazy(() => import("../pages/uikit/Buttons"));
 const Avatars = React.lazy(() => import("../pages/uikit/Avatars"));
@@ -232,21 +231,7 @@ const appRoutes = [
   ticketsRoutes,
 ];
 
-// pages
-const extrapagesRoutes = {
-  path: "/pages",
-  name: "Pages",
-  icon: "package",
-  header: "Custom",
-  children: [
-    {
-      path: "/pages/gallery",
-      name: "Gallery",
-      element: <Gallery />,
-      route: PrivateRoute,
-    },
-  ],
-};
+
 
 // ui
 const uiRoutes = {
@@ -516,7 +501,7 @@ const flattenRoutes = (routes: RoutesProps[]) => {
 const authProtectedRoutes = [
   dashboardRoutes,
   ...appRoutes,
-  extrapagesRoutes,
+
   uiRoutes,
 ];
 const publicRoutes = [...authRoutes, ...otherPublicRoutes];

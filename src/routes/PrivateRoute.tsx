@@ -4,7 +4,6 @@ import { Route, Navigate, RouteProps } from "react-router-dom";
 import { APICore } from "../helpers/api/apiCore";
 
 /**
- * Private Route forces the authorization before the route can be accessed
  * @param {*} param0
  * @returns
  */

@@ -1,7 +1,7 @@
 import {
   MENU_ITEMS,
   HORIZONTAL_MENU_ITEMS,
-  TWO_COl_MENU_ITEMS,
+//   TWO_COl_MENU_ITEMS,
   MenuItemTypes,
 } from "../constants/menu";
 
@@ -15,10 +15,7 @@ const getHorizontalMenuItems = () => {
   return HORIZONTAL_MENU_ITEMS;
 };
 
-const getTwoColumnMenuItems = () => {
-  // NOTE - You can fetch from server and return here as well
-  return TWO_COl_MENU_ITEMS;
-};
+
 
 const findAllParent = (
   menuItems: MenuItemTypes[],
@@ -55,7 +52,7 @@ const findMenuItem = (
 export {
   getMenuItems,
   getHorizontalMenuItems,
-  getTwoColumnMenuItems,
+
   findAllParent,
   findMenuItem,
 };

@@ -13,7 +13,6 @@ import DefaultLayout from "../layouts/Default";
 import VerticalLayout from "../layouts/Vertical";
 import DetachedLayout from "../layouts/Detached";
 import HorizontalLayout from "../layouts/Horizontal/";
-import TwoColumnLayout from "../layouts/TwoColumn/";
 
 import {
   authProtectedFlattenRoutes,
@@ -29,7 +28,7 @@ const AllRoutes = (props: IRoutesProps) => {
   }));
 
   const getLayout = () => {
-    let layoutCls = TwoColumnLayout;
+    let layoutCls = VerticalLayout;
 
     switch (layout.layoutType) {
       case LayoutTypes.LAYOUT_HORIZONTAL:
@@ -41,9 +40,7 @@ const AllRoutes = (props: IRoutesProps) => {
       case LayoutTypes.LAYOUT_VERTICAL:
         layoutCls = VerticalLayout;
         break;
-      default:
-        layoutCls = TwoColumnLayout;
-        break;
+   
     }
     return layoutCls;
   };
