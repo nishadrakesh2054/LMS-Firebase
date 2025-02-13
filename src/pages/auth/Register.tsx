@@ -5,7 +5,6 @@ import { Button, Alert, Row, Col } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import classNames from "classnames";
 
 //actions
 import { resetAuth, signupUser } from "../../redux/actions";
@@ -38,50 +37,6 @@ const BottomLink = () => {
         </p>
       </Col>
     </Row>
-  );
-};
-
-/* social links */
-const SocialLinks = () => {
-  const socialLinks = [
-    {
-      variant: "primary",
-      icon: "facebook",
-    },
-    {
-      variant: "danger",
-      icon: "google",
-    },
-    {
-      variant: "info",
-      icon: "twitter",
-    },
-    {
-      variant: "secondary",
-      icon: "github",
-    },
-  ];
-  return (
-    <>
-      <ul className="social-list list-inline mt-3 mb-0">
-        {(socialLinks || []).map((item, index) => {
-          return (
-            <li key={index} className="list-inline-item">
-              <Link
-                to="#"
-                className={classNames(
-                  "social-list-item",
-                  "border-" + item.variant,
-                  "text-" + item.variant
-                )}
-              >
-                <i className={classNames("mdi", "mdi-" + item.icon)}></i>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-    </>
   );
 };
 
@@ -178,9 +133,16 @@ const Register = () => {
           </div>
         </VerticalForm>
 
-        <div className="text-center">
-          <h5 className="mt-3 text-muted">{t("Sign up using")}</h5>
-          <SocialLinks />
+        <div
+          className="d-flex align-items-center justify-content-center  rounded py-1 px-3 w-100"
+          style={{ cursor: "pointer" }}
+        >
+          <p className="m-0 d-flex align-items-center gap-2 fw-semibold text-primary">
+            Continue with Google
+            <span>
+              <i className="bi bi-google text-danger"></i>
+            </span>
+          </p>
         </div>
       </AuthLayout>
     </>

@@ -1,7 +1,6 @@
 import {
   MENU_ITEMS,
   HORIZONTAL_MENU_ITEMS,
-//   TWO_COl_MENU_ITEMS,
   MenuItemTypes,
 } from "../constants/menu";
 
